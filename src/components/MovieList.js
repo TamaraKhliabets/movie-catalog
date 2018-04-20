@@ -1,26 +1,31 @@
 import React, {Component} from 'react';
 import LinkItem from './LinkItem';
+import Button from "./Button";
 
 export default class MovieList extends Component {
-
   render() {
-    const {movies, genres} = this.props;
+    const {movies, page, total, setNewPage} = this.props;
 
-    let nodeItem = (movies && genres) ?
-      movies.map(e => {
+    let nodeItem = movies.map(e => {
         return (
           <div key={e.id}>
-            <LinkItem movie={ e }
-                      genres={ genres }/>
+            <LinkItem movie={ e }/>
           </div>
-        )}) : 'Loading';
+        )});
+
+    // if(!requests) return <div>loading</div>;
 
     return (
-      <div className='list'>
-        {nodeItem}
+      <div>
+        <div className='list'>
+          {nodeItem}
+        </div>
+        <div className='page_button'>
+          <Button page={page}
+                  total={total}
+                  setNewPage={setNewPage}/>
+        </div>
       </div>
     );
   }
-
-
 }

@@ -4,16 +4,18 @@ import Crew from './Crew';
 // import Video from './Video';
 import axios from 'axios';
 import {API_KEY} from "../constants";
+import Similar from "../components/Similar";
+import Video from "../components/Video";
 
 export default class Item extends Component {
   state = {
-    movie: {},
-    credits: {}
+    movie: null,
+    credits: null
   };
 
 
   loadMovie = () => {
-    axios.get(`https://api.themoviedb.org/3/movie/${this.props.match.params.id}?api_key=${API_KEY}`)
+    axios.get(`https://api.themoviedb.org/3/movie/${this.props.match.params.id}?api_key=${API_KEY}&append_to_response=videos,similar`)
       .then(res => this.setState({movie: res.data}))
   };
 
@@ -30,16 +32,18 @@ export default class Item extends Component {
   render() {
     const {movie, credits} = this.state;
 
+    if (!movie) return <div>loading</div>;
+
+    if (!credits) return <div>Loading</div>;
+
     return (
       <div>
-        {(Object.keys(movie).length && Object.keys(credits).length) ?
-          <div>
-            <DataMovie movie={movie}/>
-            <Crew cast={credits.cast}/>
-          </div>
-          : null
-        }
-        {/*<Video/>*/}
+        {/*{console.log(movie.similar.results)}*/}
+          {/*{console.log(movie.videos.results)}*/}
+        <DataMovie movie={movie}/>
+        <Crew cast={credits.cast}/>
+          <Video video={movie.videos.results}/>
+        <Similar movies={movie.similar.results}/>
       </div>
     )
   }
