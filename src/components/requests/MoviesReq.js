@@ -1,17 +1,18 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import {API_KEY} from "../../constants";
-import Main from "../../components/Main";
-import Button from "../../components/sort/Button";
-import Search from "../../components/Search";
+import {API_KEY, URL} from "../../constants";
+import ButtonSort from './../buttons/ButtonSort';
+import Search from './../options/Search';
+import ListItem from '../movies/ListItem';
+import ButtonPage from './../buttons/ButtonPage';
 
 export default class MoviesReq extends Component {
     state = {
-        url: 'https://api.themoviedb.org/3/movie/popular',
+        url: `${URL}${this.props.match.url}/popular`,
         options: 'language=en-US',
-        movies: null,
         page: 1,
-        sortValue: null
+        movies: null,
+        isVisible: true
     };
 
     loadMovies = () => {
@@ -21,16 +22,21 @@ export default class MoviesReq extends Component {
     };
 
     searchMovie = (search) => {
-      this.setState({
-          url: 'https://api.themoviedb.org/3/search/movie',
-          options: `language=en-US&query=${search}&include_adult=false`
-      });
+        search ?
+            this.setState({
+                url: `${URL}/search${this.props.match.url}`,
+                options: `language=en-US&query=${search}&include_adult=false`
+            }) :
+            this.setState({
+                url: `${URL}${this.props.match.url}/popular`,
+                options: 'language=en-US'
+            });
     };
 
     sortMovie = (sorting) => {
         let today = `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`;
         this.setState({
-            url: `https://api.themoviedb.org/3/discover/movie`,
+            url: `${URL}/discover${this.props.match.url}`,
             options: `language=en-US&sort_by=${sorting}&include_adult=false&include_video=false&release_date.lte=${today}`
         })
     };
@@ -46,7 +52,6 @@ export default class MoviesReq extends Component {
 
     componentWillUpdate(nextState) {
         if (nextState.page !== this.state.page) {
-            // || nextState.search !== this.state.search) {
             this.loadMovies()
         }
     }
@@ -57,13 +62,15 @@ export default class MoviesReq extends Component {
         if (!movies) return <div className='loading'/>;
 
         return (
-            <div className=''>
-                <Button sortMovie={this.sortMovie}/>
-                <Search searchMovie={this.searchMovie}/>
-                <Main movies={movies.results}
-                      page={page}
-                      total={movies.total_pages}
-                      setNewPage={this.setPage}/>
+            <div>
+                <div>
+                    <ButtonSort sortMovie={this.sortMovie}/>
+                    <Search searchMovie={this.searchMovie}/>
+                </div>
+                <ListItem movies={movies.results}/>
+                <ButtonPage page={page}
+                            total={movies.total_pages}
+                            setNewPage={this.setPage}/>
             </div>
         )
     }

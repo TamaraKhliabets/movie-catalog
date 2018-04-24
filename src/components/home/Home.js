@@ -45,7 +45,7 @@ export default class Home extends Component{
           <Carousel units={movies.results}/>
         <div className='link_carousel'>
           <Link to={`/movies`}>Movies</Link>
-          <Link to={`/tv-show`}>TV Show</Link>
+          <Link to={`/tv`}>TV Show</Link>
           <Link to={`/persons`}>Filmography</Link>
         </div>
       </div>

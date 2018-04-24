@@ -13,7 +13,8 @@ export default class PersonLink extends Component{
       <div>
         <Link to={`/persons/${id}`}>
             <img src={src} alt={character} />
-          {name}
+            <div>{name}</div>
+            <div>{character}</div>
         </Link>
       </div>
     )

@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import PersonLink from '../components/PersonLink';
+import PersonLink from '../links/PersonLink';
 
 
-export default class Crew extends Component {
+export default class Cast extends Component {
   state = {
     currentList: this.props.cast.slice(0, 10),
     isVisibleButton: true

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-export default class Button extends Component{
+export default class ButtonSort extends Component{
     setSorting= (e) => {
             e.preventDefault();
             this.props.sortMovie(e.target.id)

@@ -6,7 +6,7 @@ export default class Footer extends Component{
 
         return (
             <div>
-                <a href={url}>hi</a>
+                <a href={url}>foo</a>
             </div>
         )
     }

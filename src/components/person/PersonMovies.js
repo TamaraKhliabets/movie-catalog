@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ListItem from "../containers/ListItem";
+import ListItem from "../movies/ListItem";
 
 export default class PersonMovies extends Component{
   render() {

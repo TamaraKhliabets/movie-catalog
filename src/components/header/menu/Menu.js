@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-import Sidebar from "../containers/Sidebar";
+import Genres from "./Genres";
 
 export default class Menu extends Component{
   render() {
@@ -13,22 +13,18 @@ export default class Menu extends Component{
           </Link>
         </div>
         <div  className='menu_item'>
-          <Link to={`/movies`}>
+          <Link to={`/movie`}>
             <div  className='menu_item_icon'>&#127916;</div>
             <div>Movies</div>
           </Link>
         </div>
         <div className='menu_item'>
-          <Link to={'/tv-show'}>
+          <Link to={'/tv'}>
             <div  className='menu_item_icon'>&#128250;</div>
             <div>TV Show</div>
           </Link>
         </div>
-        <Sidebar/>
-        {/*<div className='menu_item'>*/}
-          {/*<div  className='menu_item_icon'>&#8788;</div>*/}
-          {/*<div>A - Z</div>*/}
-        {/*</div>*/}
+        <Genres/>
         <div  className='menu_item'>
           <Link to={`/persons`}>
             <div  className='menu_item_icon'>&#128114;</div>

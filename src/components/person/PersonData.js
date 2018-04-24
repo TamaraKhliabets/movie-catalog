@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {MONTH} from "../constants";
+import {MONTH} from "../../constants";
 
 export default class PersonData extends Component{
   render() {

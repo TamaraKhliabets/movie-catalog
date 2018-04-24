@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import Routes from '../routes/Routes';
-import Title from "./Title";
-import Menu from './Menu';
+import Routes from './routes/Routes';
+import Title from "./header/Title";
+import Menu from './header/menu/Menu';
 import Footer from './Footer';
 
 export default class App extends Component {

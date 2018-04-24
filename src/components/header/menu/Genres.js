@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-import {API_KEY} from "../constants";
+import {API_KEY} from "../../../constants";
 
-export default class Sidebar extends Component {
+export default class Genres extends Component {
   state = {
     genres: null
   };
