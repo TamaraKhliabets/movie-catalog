@@ -24,7 +24,6 @@ export default class Video extends Component {
 
         return (
             <div>
-                {console.log(video)}
                 <div>
                     {videos}
                 </div>

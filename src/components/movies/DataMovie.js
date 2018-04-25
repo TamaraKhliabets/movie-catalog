@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default class DataMovie extends Component {
     render() {
-        const {movie} = this.props;
+        const {movie, crew} = this.props;
         const {
             title,
             original_title,
@@ -22,6 +22,7 @@ export default class DataMovie extends Component {
         const country = movie.production_countries ? movie.production_countries.map(e => e.name).join(', ') : movie.origin_country.join(', ');
         const language = movie.spoken_languages ? movie.spoken_languages.map(e => e.name).join(', ') : movie.original_language;
         const time = runtime || episode_run_time.join(' min/ ');
+        const director = crew.find(e => e.job === 'Director').name;
         const production = movie.production_companies.map(e => e.name).join(', ');
         const genres = movie.genres.map(e => e.name).join(', ');
 
@@ -51,6 +52,7 @@ export default class DataMovie extends Component {
                             <div>Last: {time} min</div>
                             <div>Production: {production}</div>
                             <div>Genres: {genres}</div>
+                            <div>Director: {director}</div>
                             <div>Overview: {overview}</div>
                         </div>
                     </div>

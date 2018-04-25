@@ -1,19 +1,19 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 
 export default class Reviews extends Component{
-    state = {
-        reviews: null
-    };
-
-    loadReviews = () => {
-//TODO reviews
-    };
-
     render() {
+        let nodeReviews = this.props.reviews.map(e => {
+            return (
+                <div key={e.id}>
+                    {e.author}
+                    {e.content}
+                </div>
+            )
+        });
+
         return (
             <div>
-                hi
+                {nodeReviews}
             </div>
         )
     }

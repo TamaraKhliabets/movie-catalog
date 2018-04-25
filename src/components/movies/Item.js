@@ -13,7 +13,7 @@ export default class Item extends Component {
     };
 
     loadMovie = () => {
-        axios.get(`${URL}${this.props.match.url}?api_key=${API_KEY}&append_to_response=videos,similar,credits`)
+        axios.get(`${URL}${this.props.match.url}?api_key=${API_KEY}&append_to_response=videos,similar,credits,reviews`)
             .then(res => this.setState({movie: res.data}))
     };
 
@@ -28,11 +28,12 @@ export default class Item extends Component {
 
         return (
             <div>
-                <DataMovie movie={movie}/>
+                <DataMovie movie={movie}
+                           crew={movie.credits.crew}/>
                 <Cast cast={movie.credits.cast}/>
                 <Video video={movie.videos.results}/>
                 <Similar movies={movie.similar.results}/>
-                <Reviews/>
+                <Reviews reviews={movie.reviews.results}/>
             </div>
         )
     }
