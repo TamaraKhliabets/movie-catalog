@@ -63,7 +63,7 @@ export default class MoviesReq extends Component {
 
         return (
             <div>
-                <div>
+                <div className='options'>
                     <ButtonSort sortMovie={this.sortMovie}/>
                     <Search searchMovie={this.searchMovie}/>
                 </div>

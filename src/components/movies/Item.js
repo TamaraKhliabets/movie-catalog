@@ -28,12 +28,11 @@ export default class Item extends Component {
 
         return (
             <div>
-                <DataMovie movie={movie}
-                           crew={movie.credits.crew}/>
+                <DataMovie movie={movie}/>
                 <Cast cast={movie.credits.cast}/>
                 <Video video={movie.videos.results}/>
                 <Similar movies={movie.similar.results}/>
-                <Reviews reviews={movie.reviews.results}/>
+                {/*<Reviews reviews={movie.reviews.results}/>*/}
             </div>
         )
     }

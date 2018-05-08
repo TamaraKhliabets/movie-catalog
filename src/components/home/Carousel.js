@@ -1,25 +1,30 @@
 import React, {Component} from 'react';
-import LinkCarousel from "./LinkCarousel";
+import {Link} from 'react-router-dom';
 
-export default class Carousel extends Component{
-  render() {
-    const {units} = this.props;
-    // const {id, title} = requests;
+export default class Carousel extends Component {
+    render() {
+        const {units} = this.props;
+        const shortUnits = units.slice(0, 4);
 
-    let listNode = units.slice(0,1).map((unit, i) => {
-      return (
-        <div className={`carousel_item carousel_item_${i}`} key={unit.id}>
-          {/*<a className="arrow arrow-prev" href="#">prev</a>*/}
-          <LinkCarousel unit={unit}/>
-          {/*<a className="arrow arrow-next" href="#">next</a>*/}
-        </div>
-      )
-    });
+        let labels = shortUnits.map((l, i) => {
+            const src = 'https://image.tmdb.org/t/p/original'.concat(l.backdrop_path);
+            return (
+                <div key={l.id} className={`carousel_item carousel_item_${i}`} id={`.carousel_item_${i}`}>
+                    <img className='carousel_image' src={src} alt={l.title}/>
+                    <div className='carousel_name'>
+                        <Link to={`/movie/${l.id}`}>
+                            <div className=''>{l.title}</div>
+                            <div className='carousel_overview'>{l.overview}</div>
+                        </Link>
+                    </div>
+                </div>
+            )
+        });
 
-    return(
-      <figure className='carousel_wrapper'>
-        {listNode}
-      </figure>
-    )
-  }
+        return (
+            <div className='carousel_wrapper'>
+                {labels}
+            </div>
+        )
+    }
 }

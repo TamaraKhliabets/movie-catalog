@@ -8,7 +8,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className='app'>
         <div  className='title_container'>
           <Title/>
           <Menu/>
@@ -16,7 +16,7 @@ export default class App extends Component {
         <div className='main_container'>
           <Routes/>
         </div>
-        <Footer/>
+        {/*<Footer/>*/}
       </div>
     );
   }

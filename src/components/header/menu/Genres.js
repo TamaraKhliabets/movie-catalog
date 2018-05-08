@@ -36,8 +36,8 @@ export default class Genres extends Component {
     return (
       <div className='menu_item'>
         <div className='menu_item_sidebar'>
-          <div  className='menu_item_icon'>&#127908;</div>
-          <div>Genres</div>
+            <span role="img" aria-label="icon" className='menu_item_icon'>&#127908;</span>
+          <div className='menu_item_name'>Genres</div>
           <div className='sidebar'>
             {genresLink}
           </div>

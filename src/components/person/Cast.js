@@ -3,51 +3,42 @@ import PersonLink from '../links/PersonLink';
 
 
 export default class Cast extends Component {
-  state = {
-    currentList: this.props.cast.slice(0, 10),
-    isVisibleButton: true
-  };
+    state = {
+        marginLeft: 5
+    };
 
-  showAllPersons = () => {
-    this.setState({
-      currentList: this.props.cast,
-      isVisibleButton: !this.state.isVisibleButton
-    })
-  };
+    prevMargin = () => {
+            this.setState({marginLeft: this.state.marginLeft + 90})
 
-  showAnyPersons = () => {
-    this.setState({
-      currentList: this.props.cast.slice(0, 10),
-      isVisibleButton: !this.state.isVisibleButton
-    })
-  };
+    };
+
+
+    nextMargin = () => {
+        this.setState({marginLeft: this.state.marginLeft - 90})
+    };
 
   render() {
     const {cast} = this.props;
+    const {marginLeft} = this.state;
 
-    let {currentList, isVisibleButton} = this.state;
-
-
-    let listActors = currentList.map(e => {
-      return (
-        <div key={e.id}>
-          <PersonLink actor={e}/>
-        </div>
-      )
-    });
+      let listActors = cast.map((e, i) => {
+            return (
+              <div key={e.id} id={i}>
+                <PersonLink actor={e}/>
+              </div>
+            )
+          });
 
     return (
       <div>
-        <div>
-          {listActors}
-        </div>
-        {
-          (cast.length > 10) ?
-            (isVisibleButton ?
-              <button onClick={this.showAllPersons}>more</button> :
-              <button onClick={this.showAnyPersons}>less</button>) :
-            null
-        }
+          <div>Starring:</div>
+          <div className='cast_wrapper'>
+              <button onClick={this.prevMargin} className='cast_arrow arrow_left'>&#10094;</button>
+              <div className='cast' id='cast' style={{width: cast.length * 100 + '%', marginLeft: `${marginLeft}%`}}>
+                  {listActors}
+              </div>
+              <button onClick={this.nextMargin} className='cast_arrow arrow_right'>&#10095;</button>
+          </div>
       </div>
     )
   }

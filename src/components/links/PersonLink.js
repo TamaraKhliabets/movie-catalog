@@ -10,11 +10,14 @@ export default class PersonLink extends Component{
     const src = 'https://image.tmdb.org/t/p/w200'.concat(profile_path);
 
     return (
-      <div>
+      <div className='person_link'>
         <Link to={`/persons/${id}`}>
-            <img src={src} alt={character} />
-            <div>{name}</div>
-            <div>{character}</div>
+                <img src={src} alt={character} className='person_link_image'/>
+            <div className='person_link_name'>
+                <div>{name}</div>
+                <div className='character'>{character}</div>
+            </div>
+            <div className='link_full_info'>{name}({character})</div>
         </Link>
       </div>
     )

@@ -1,24 +1,31 @@
 import React, {Component} from 'react';
 
 export default class ButtonSort extends Component{
-    setSorting= (e) => {
-            e.preventDefault();
-            this.props.sortMovie(e.target.id)
+    state = {
+        value: 'popularity.desc'
+    };
+
+    setSorting = (e) => {
+        e.preventDefault();
+            this.setState({value: e.target.value});
+        this.props.sortMovie(e.target.value)
     };
 
     render() {
+        let {value} = this.state;
+
         return (
             <div>
-                <ul>
-                    <li onClick={this.setSorting} id='popularity.desc'>By popularity <span>&#9660;</span></li>
-                    <li onClick={this.setSorting} id='popularity.asc'>By popularity <span>&#9650;</span></li>
-                    <li onClick={this.setSorting} id='release_date.desc'>By release date <span>&#9660;</span></li>
-                    <li onClick={this.setSorting} id='release_date.asc'>By release date <span>&#9650;</span></li>
-                    <li onClick={this.setSorting} id='vote_average.desc'>By vote average <span>&#9660;</span></li>
-                    <li onClick={this.setSorting} id='vote_average.asc'>By vote average <span>&#9650;</span></li>
-                    <li onClick={this.setSorting} id='vote_count.desc'>By vote count <span>&#9660;</span></li>
-                    <li onClick={this.setSorting} id='vote_count.asc'>By vote count <span>&#9650;</span></li>
-                </ul>
+                <select value={value}  onChange={this.setSorting}  className='dropdown'>
+                    <option value='popularity.desc'>By popularity</option>
+                    <option value='popularity.asc'>By popularity</option>
+                    <option value='release_date.desc'>By release date</option>
+                    <option value='release_date.asc'>By release date</option>
+                    <option value='vote_average.desc'>By vote average</option>
+                    <option value='vote_average.asc'>By vote average</option>
+                    <option value='vote_count.desc'>By vote count</option>
+                    <option value='vote_count.asc'>By vote count</option>
+                </select>
             </div>
         )
     }
