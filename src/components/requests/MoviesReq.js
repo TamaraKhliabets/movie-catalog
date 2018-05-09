@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {API_KEY, URL} from "../../constants";
-import ButtonSort from './../buttons/ButtonSort';
+import ButtonFilter from '../buttons/ButtonFilter';
 import Search from './../options/Search';
 import ListItem from '../movies/ListItem';
 import ButtonPage from './../buttons/ButtonPage';
@@ -33,12 +33,16 @@ export default class MoviesReq extends Component {
             });
     };
 
-    sortMovie = (sorting) => {
-        let today = `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`;
+    sortMovie = (sortBy, year) => {
+        let {page} = this.state;
+        let today = new Date().getFullYear();
+        let options = year ?
+            `language=en-US&sort_by=${sortBy}&include_adult=false&include_video=false&primary_release_year=${year}&page=${page}` :
+            `language=en-US&sort_by=${sortBy}&include_adult=false&include_video=false&year=${today}&page=${page}`;
         this.setState({
             url: `${URL}/discover${this.props.match.url}`,
-            options: `language=en-US&sort_by=${sorting}&include_adult=false&include_video=false&release_date.lte=${today}`
-        })
+            options: options
+        });
     };
 
     setPage = (page) => {
@@ -63,9 +67,9 @@ export default class MoviesReq extends Component {
 
         return (
             <div>
-                <div className='options'>
-                    <ButtonSort sortMovie={this.sortMovie}/>
-                    <Search searchMovie={this.searchMovie}/>
+                <div>
+                    <ButtonFilter sortMovie={this.sortMovie}/>
+                    {/*<Search searchMovie={this.searchMovie}/>*/}
                 </div>
                 <ListItem movies={movies.results}/>
                 <ButtonPage page={page}

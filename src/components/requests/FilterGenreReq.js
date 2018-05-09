@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {API_KEY, URL} from "../../constants";
-import ButtonSort from './../buttons/ButtonSort';
+import ButtonFilter from '../buttons/ButtonFilter';
 import ListItem from '../movies/ListItem';
 import ButtonPage from './../buttons/ButtonPage';
 import Choice from "../options/Choice";
@@ -55,7 +55,7 @@ export default class FilterGenreReq extends Component {
         return (
             <div>
                 <div>
-                    <ButtonSort sortMovie={this.sortMovie}/>
+                    <ButtonFilter sortMovie={this.sortMovie}/>
                     <Choice setUrl={this.setUrl}/>
                 </div>
                 <ListItem movies={movies.results}/>
