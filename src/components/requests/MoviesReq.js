@@ -69,7 +69,7 @@ export default class MoviesReq extends Component {
             <div>
                 <div>
                     <ButtonFilter sortMovie={this.sortMovie}/>
-                    {/*<Search searchMovie={this.searchMovie}/>*/}
+                    <Search searchMovie={this.searchMovie}/>
                 </div>
                 <ListItem movies={movies.results}/>
                 <ButtonPage page={page}

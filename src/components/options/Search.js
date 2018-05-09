@@ -10,19 +10,22 @@ export default class Search extends Component {
         this.setState({search})
     };
 
-    searchSubmit = () => {
+    searchSubmit = (e) => {
+        e.preventDefault();
         this.props.searchMovie(this.state.search);
     };
 
     render() {
         return (
-            <div className='search'>
+            <form className='search' onClick={this.searchSubmit}>
                 <input type='text'
-                       placeholder='Search'
-                       className='search_button'
+                       placeholder='Type to search...'
+                       className='search_button search_button_input'
                        onChange={this.search}/>
-                <button onClick={this.searchSubmit}>&#x1F50D;</button>
-            </div>
+                <button className='search_button_button'>
+                    <span role="img" aria-label="search">&#x1F50D;</span>
+                </button>
+            </form>
         )
     }
 }
