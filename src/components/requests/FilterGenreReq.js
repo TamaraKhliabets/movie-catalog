@@ -49,7 +49,7 @@ export default class FilterGenreReq extends Component {
 
     render() {
         const {movies, page} = this.state;
-
+        {console.log(this.props.match.params.name, this.props.match.params.id)}
         if (!movies) return <div className='loading'/>;
 
         return (

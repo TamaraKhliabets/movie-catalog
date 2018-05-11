@@ -1,31 +1,34 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
 export default class ButtonPage extends Component {
-  prevList = () => {
-    this.props.setNewPage(-1)
-  };
 
-  nextList = () => {
-    this.props.setNewPage(1)
-  };
 
-  render() {
-    const {page, total} = this.props;
+    render() {
+        const {page, total, url} = this.props;
 
-    let buttonsList = Array.from({length: 5}, (e, i) => page - 2 + i)
-      .filter(e => e > 0 && e <= total)
-      .map(e => {
+        let buttonsList = Array.from({length: 5}, (e, i) => page - 2 + i)
+            .filter(e => e > 1 && e <= total - 1)
+            .map(e => {
+                return (
+                        <Link key={e} to={`/${url}/p=${e}`}>{e}</Link>
+                )
+            });
+
         return (
-          <button key={e} className='page_button_item'>{e}</button>
-        )
-      });
+            <div className='page_button_group'>
+                {/*{console.log(total)}*/}
 
-    return (
-      <div className='page_button_group'>
-        <button className='page_button_item' onClick={this.prevList}>&#171;</button>
-        <div>{buttonsList}</div>
-        <button  className='page_button_item' onClick={this.nextList}>&#187;</button>
-      </div>
-    )
-  }
+                {
+                    (page <= 1) ? null : <Link to={`/${url}/p=${page - 1}`}>&#171;</Link>
+                }
+                <Link to={`/${url}/p=1`}>1</Link>
+                <div>{buttonsList}</div>
+                <Link to={`/${url}/p=${total}`}>{total}</Link>
+                {
+                    (page >= total) ? null : <Link to={`/${url}/p=${page + 1}`}>&#187;</Link>
+                }
+            </div>
+        )
+    }
 }

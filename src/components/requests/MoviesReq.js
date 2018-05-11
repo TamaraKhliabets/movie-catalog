@@ -8,9 +8,10 @@ import ButtonPage from './../buttons/ButtonPage';
 
 export default class MoviesReq extends Component {
     state = {
-        url: `${URL}${this.props.match.url}/popular`,
+        direction: this.props.match.url.split('/')[1],
+        url: `${URL}/${this.props.match.url.split('/')[1]}/popular`,
         options: 'language=en-US',
-        page: 1,
+        page: this.props.match.params.page ? +this.props.match.params.page : 1,
         movies: null,
         isVisible: true
     };
@@ -22,13 +23,14 @@ export default class MoviesReq extends Component {
     };
 
     searchMovie = (search) => {
+        let {direction} = this.state;
         search ?
             this.setState({
-                url: `${URL}/search${this.props.match.url}`,
+                url: `${URL}/search/${direction}`,
                 options: `language=en-US&query=${search}&include_adult=false`
             }) :
             this.setState({
-                url: `${URL}${this.props.match.url}/popular`,
+                url: `${URL}/${direction}/popular`,
                 options: 'language=en-US'
             });
     };
@@ -45,23 +47,20 @@ export default class MoviesReq extends Component {
         });
     };
 
-    setPage = (page) => {
-        this.setState({page: this.state.page + page});
-        console.log(this.state.page)
-    };
+    componentWillUpdate(nextState) {
+        if(nextState.url !== this.state.url) {
+            this.loadMovies()
+        }
+    }
 
     componentDidMount() {
         this.loadMovies()
     };
 
-    componentWillUpdate(nextState) {
-        if (nextState.page !== this.state.page) {
-            this.loadMovies()
-        }
-    }
+
 
     render() {
-        const {movies, page} = this.state;
+        const {movies, page, direction} = this.state;
 
         if (!movies) return <div className='loading'/>;
 
@@ -74,7 +73,7 @@ export default class MoviesReq extends Component {
                 <ListItem movies={movies.results}/>
                 <ButtonPage page={page}
                             total={movies.total_pages}
-                            setNewPage={this.setPage}/>
+                            url={direction}/>
             </div>
         )
     }

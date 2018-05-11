@@ -15,12 +15,14 @@ export default class Routes extends Component {
                 <Switch>
                     <Route exact path='/' component={() => <Home/>}/>
                     <Route exact path='/movie' component={({match}) => <MoviesReq match={match}/>}/>
+                    <Route path='/movie/p=:page' component={({match}) => <MoviesReq match={match}/>}/>
                     <Route exact path='/movie/:id' component={({match}) => <Item match={match}/>}/>
                     <Route exact path='/tv' component={({match}) => <MoviesReq match={match}/>}/>
-                    <Route exact path='/persons' component={() => <Persons/>}/>
-                    <Route path='/genres/:name/:id' component={({match}) => <FilterGenreReq match={match}/>}/>
+                    <Route path='/tv/p=:page' component={({match}) => <MoviesReq match={match}/>}/>
                     <Route path='/tv/:id' component={({match}) => (<Item match={match}/>)}/>
+                    <Route exact path='/persons' component={() => <Persons/>}/>
                     <Route path='/persons/:id' component={({match}) => <PersonReq match={match}/>}/>
+                    <Route path='/genres/:name/:id' component={({match}) => <FilterGenreReq match={match}/>}/>
                     <Route path='/collection/:id' component={({match}) => <CollectionReq match={match}/>}/>
                 </Switch>
             </div>

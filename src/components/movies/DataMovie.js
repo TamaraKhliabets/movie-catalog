@@ -18,7 +18,7 @@ export default class DataMovie extends Component {
             overview
         } = movie;
         const originalTitle = movie.original_title || movie.original_name;
-        const src = poster_path ? 'https://image.tmdb.org/t/p/w300'.concat(poster_path) : DEF_PIC_MOVIE;
+        const src = 'https://image.tmdb.org/t/p/w300'.concat(poster_path);
         const year = (release_date || first_air_date) ? new Date(release_date).getFullYear() || new Date(first_air_date).getFullYear() : null;
         const endYear = last_air_date ? new Date(last_air_date).getFullYear() : null;
         const country = movie.production_countries ? movie.production_countries.map(e => e.name).join(', ') : movie.origin_country.join(', ');
