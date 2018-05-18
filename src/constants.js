@@ -10,13 +10,19 @@ export const MENU_ITEMS = [
     },
     {
         id: 'menu_item_2',
-        direction: '/movie',
+        direction: {
+            pathname: '/movie',
+            search: '?page=1'
+        },
         icon: '🎬',
         name: 'Movies'
     },
     {
         id: 'menu_item_3',
-        direction: '/tv',
+        direction: {
+            pathname: '/tv',
+            search: '?page=1'
+        },
         icon: '📺',
         name: 'TV Show'
     },

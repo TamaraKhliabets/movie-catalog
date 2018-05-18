@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
 export default class ButtonFilter extends Component {
     state = {
@@ -19,11 +20,7 @@ export default class ButtonFilter extends Component {
         this.setState({year: e.target.value});
     };
 
-    handleSubmit = (e) => {
-        e.preventDefault();
-        let {sortBy, year} = this.state;
-        this.props.sortMovie(sortBy, year)
-    };
+    handleSubmit = () => {};
 
     render() {
         let {showFilter, sortBy, year} = this.state;
@@ -43,7 +40,7 @@ export default class ButtonFilter extends Component {
                     Filter
                 </button>
                 {showFilter ?
-                    (<form className='filter_form' onSubmit={this.handleSubmit}>
+                    (<div className='filter_form'>
                         <div className='filter_name'>Order:</div>
                         <select value={sortBy} onChange={this.setSorting} className='filter_select'>
                             <option value='popularity.desc'>Most popular</option>
@@ -55,8 +52,15 @@ export default class ButtonFilter extends Component {
                             <option value='0'>All</option>
                             {yearOption}
                         </select>
-                        <button className='filter_form_submit'>Show</button>
-                    </form>) : null}
+                        <Link to={
+                            (year === 0) ? `/movie?page=1&sort=${sortBy}`:
+                            `/movie?page=1&sort=${sortBy}&year=${year}`
+                        }
+                              className='filter_form_submit'
+                              onClick={this.handleSubmit}>
+                            Show
+                        </Link>
+                    </div>) : null}
             </div>
         )
     }

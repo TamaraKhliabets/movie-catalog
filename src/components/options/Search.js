@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
 export default class Search extends Component {
     state = {
-        search: null
+        search: ''
     };
 
     search = (e) => {
@@ -10,22 +11,22 @@ export default class Search extends Component {
         this.setState({search})
     };
 
-    searchSubmit = (e) => {
-        e.preventDefault();
-        this.props.searchMovie(this.state.search);
+    searchSubmit = () => {
+        this.setState({search: ''})
     };
 
     render() {
         return (
-            <form className='search' onClick={this.searchSubmit}>
+            <div className='search'>
                 <input type='text'
                        placeholder='Type to search...'
                        className='search_button search_button_input'
+                       value={this.state.search}
                        onChange={this.search}/>
-                <button className='search_button_button'>
+                <Link to={`/search?search=${this.state.search}&page=1`} className='search_button_button' onClick={this.searchSubmit}>
                     <span role="img" aria-label="search">&#x1F50D;</span>
-                </button>
-            </form>
+                </Link>
+            </div>
         )
     }
 }
