@@ -330,6 +330,7 @@ a {
   font-weight: bold;
   color: @white;
   outline: none;
+  text-align: center;
   &:active{
     background: @anthracite
   }
@@ -503,30 +504,35 @@ a {
 }
 
 
-//BUTTON
+//BUTTONPAGE
 .page_button_group {
-  //text-align: center;
   display: flex;
+  flex-direction: row;
   justify-content: center;
-  //border: none;
+  //border: 1px solid black;
+  padding: 1%;
 }
 
-.page_button_item {
-  //border-radius: 5px;
-  width: 50px;
-  //border: none;
-  //margin: 5px;
-  padding: 5px;
-  //background-color: none;
-  //box-shadow: 0 0 1em green;
-  //border: 1px solid black;
-
-  :active {
-    background-color: @anthracite;
-    border-radius: 3px;
+.page_button_item, .page_button_item_active {
+  margin: .1em;
+  padding: .3em;
+  min-width: 2em;
+  text-align: center;
+  border: 1px dotted @gray;
+  background-color: @anthracite;
+  color: @white;
+  &:active {
+    background-color: @gray;
   }
 }
 
+
+.page_button_item_active{
+  background-color: @gray;
+  color: @yellow;
+  font-weight: bold;
+  //border-radius: 3px;
+}
 
 
 

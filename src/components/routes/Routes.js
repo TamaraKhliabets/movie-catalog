@@ -16,9 +16,9 @@ export default class Routes extends Component {
             <div>
                 <Switch>
                     <Route exact path='/' component={() => <Home/>}/>
-                    <Route path='/movie' component={({match, location}) => <MoviesReq match={match} location={location}/>}/>
-                    <Route exact path='/movie/:id' component={({match}) => <Item match={match}/>}/>
-                    <Route path='/tv' component={({match, location}) => <TvReq match={match} location={location}/>}/>
+                    <Route exact path='/movie' component={({match, location}) => <MoviesReq match={match} location={location}/>}/>
+                    <Route path='/movie/:id' component={({match}) => <Item match={match}/>}/>
+                    <Route exact path='/tv' component={({match, location}) => <TvReq match={match} location={location}/>}/>
                     <Route path='/tv/:id' component={({match}) => (<Item match={match}/>)}/>
                     <Route exact path='/persons' component={() => <Persons/>}/>
                     <Route path='/persons/:id' component={({match}) => <PersonReq match={match}/>}/>

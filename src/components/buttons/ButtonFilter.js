@@ -23,6 +23,7 @@ export default class ButtonFilter extends Component {
     handleSubmit = () => {};
 
     render() {
+        let {direction} = this.props;
         let {showFilter, sortBy, year} = this.state;
 
         let yearOption = Array.from({length: 30}, (e, i) => {
@@ -53,8 +54,8 @@ export default class ButtonFilter extends Component {
                             {yearOption}
                         </select>
                         <Link to={
-                            (year === 0) ? `/movie?page=1&sort=${sortBy}`:
-                            `/movie?page=1&sort=${sortBy}&year=${year}`
+                            (year === 0) ? `/${direction}page=1&sort=${sortBy}`:
+                            `/${direction}page=1&sort=${sortBy}&year=${year}`
                         }
                               className='filter_form_submit'
                               onClick={this.handleSubmit}>

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Req from './Req';
-import ButtonFilter from '../buttons/ButtonFilter';
 
 export default class MoviesReq extends Component {
     state = {
@@ -20,7 +19,7 @@ export default class MoviesReq extends Component {
             `language=en-US&sort_by=${sort}&include_adult=false&include_video=false&year=${today}`;
         searchParams.has('sort') ?
             this.setState({
-                url: 'discover/movie',
+                url: `/discover/movie`,
                 options: options,
                 page: +searchParams.get('page')
             }) :
@@ -34,7 +33,6 @@ export default class MoviesReq extends Component {
         return (
             <div>
                 <Req {...this.state}/>
-                <ButtonFilter {...this.state}/>
             </div>
         )
     }

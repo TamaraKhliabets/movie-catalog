@@ -17,13 +17,13 @@ export default class Search extends Component {
 
     render() {
         return (
-            <div className='search'>
+            <div className='search'  onClick={this.searchSubmit}>
                 <input type='text'
                        placeholder='Type to search...'
                        className='search_button search_button_input'
                        value={this.state.search}
                        onChange={this.search}/>
-                <Link to={`/search?search=${this.state.search}&page=1`} className='search_button_button' onClick={this.searchSubmit}>
+                <Link to={`/search?search=${this.state.search}&page=1`} className='search_button_button'>
                     <span role="img" aria-label="search">&#x1F50D;</span>
                 </Link>
             </div>

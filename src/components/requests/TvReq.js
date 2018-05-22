@@ -11,7 +11,21 @@ export default class MoviesReq extends Component {
 
     componentWillMount() {
         let searchParams = new URLSearchParams(this.props.location.search);
-        this.setState({page: +searchParams.get('page')})
+        let sort = searchParams.get('sort');
+        let year = searchParams.get('year');
+        let today = new Date().getFullYear();
+        let options = searchParams.has('year') ?
+            `language=en-US&sort_by=${sort}&include_adult=false&include_video=false&primary_release_year=${year}` :
+            `language=en-US&sort_by=${sort}&include_adult=false&include_video=false&year=${today}`;
+        searchParams.has('sort') ?
+            this.setState({
+                url: '/discover/tv',
+                options: options,
+                page: +searchParams.get('page')
+            }) :
+            this.setState({
+                page: +searchParams.get('page'),
+            })
     };
 
 

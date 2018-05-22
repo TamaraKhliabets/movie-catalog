@@ -11,7 +11,22 @@ export default class FilterGenreReq extends Component {
 
     componentWillMount() {
         let searchParams = new URLSearchParams(this.props.location.search);
-        this.setState({page: +searchParams.get('page')})
+        let sort = searchParams.get('sort');
+        let year = searchParams.get('year');
+        let today = new Date().getFullYear();
+        let genre = this.props.match.params.id;
+        let options = searchParams.has('year') ?
+            `language=en-US&sort_by=${sort}&include_adult=false&include_video=false&primary_release_year=${year}&with_genres=${genre}` :
+            `language=en-US&sort_by=${sort}&include_adult=false&include_video=false&year=${today}&with_genres=${genre}`;
+        searchParams.has('sort') ?
+            this.setState({
+                url: `/discover/movie`,
+                options: options,
+                page: +searchParams.get('page')
+            }) :
+            this.setState({
+                page: +searchParams.get('page'),
+            })
     };
 
     render() {
