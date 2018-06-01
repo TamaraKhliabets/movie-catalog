@@ -562,10 +562,6 @@ a {
 
 
 //DATAMOVIE
-.item {
-  //background-color: #d34833;
-}
-
 .item_description {
   padding: 1em;
   display: flex;
@@ -586,6 +582,9 @@ a {
     font-weight: lighter;
     vertical-align: top;
   }
+  a{
+    font-weight: bolder;
+  }
 }
 
 //CAST
@@ -602,7 +601,6 @@ a {
 .cast{
   width: 90%;
   margin: 0 auto;
-  //border: 1px solid blue;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-around;
@@ -745,5 +743,15 @@ a {
   &:hover{
     transition: .5s;
     color: @aquamarine;
+  }
+}
+
+//FOOTER
+.footer{
+  background: @lightGray;
+  padding: 1em;
+  text-align: right;
+  a{
+    font-weight: lighter;
   }
 }

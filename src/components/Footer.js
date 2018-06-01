@@ -5,8 +5,8 @@ export default class Footer extends Component{
         const url = `https://developers.themoviedb.org/3`;
 
         return (
-            <div>
-                <a href={url}>foo</a>
+            <div className='footer'>
+                <a href={url}>The Movie Database API</a>
             </div>
         )
     }

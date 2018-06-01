@@ -18,7 +18,7 @@ export default class App extends Component {
                 <div className='main_container'>
                     <Routes/>
                 </div>
-                {/*<Footer/>*/}
+                <Footer/>
             </div>
         );
     }
