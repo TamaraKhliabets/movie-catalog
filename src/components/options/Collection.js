@@ -10,23 +10,23 @@ export default class Collection extends Component {
 
         return (
             <div>
-            <div className='item_description'>
-                <img src={poster_path ? src : cinema} alt={name}/>
-                <table className='item_info'>
-                    <caption className='item_title'>{name}</caption>
-                    <tbody>
-                    {
-                        overview ?
-                            <tr>
-                                <td>Overview:</td>
-                                <td>{overview}</td>
-                            </tr>
-                            : null
-                    }
-                    </tbody>
-                </table>
-            </div>
-            <ListItem movies={parts} direction='movies'/>
+                <div className='item_description'>
+                    <img src={poster_path ? src : cinema} alt={name}/>
+                    <table className='item_info'>
+                        <caption className='item_title'>{name}</caption>
+                        <tbody>
+                        {
+                            overview ?
+                                <tr>
+                                    <td>Overview:</td>
+                                    <td>{overview}</td>
+                                </tr>
+                                : null
+                        }
+                        </tbody>
+                    </table>
+                </div>
+                <ListItem movies={parts} direction='movies'/>
             </div>
         )
     }

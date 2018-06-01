@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ListItem from "../movies/ListItem";
 
-export default class PersonMovies extends Component{
+export default class PersonMovies extends Component {
     state = {
         start: 0,
         end: 4,
@@ -28,7 +28,7 @@ export default class PersonMovies extends Component{
     };
 
     componentDidMount() {
-        if(this.props.movie.length >= 4)
+        if (this.props.movie.length >= 4)
             this.setState({visibleButtons: true})
     }
 

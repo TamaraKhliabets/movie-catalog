@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import cinema from '../../default/ScreenFlow.png';
 
-export default class TvLink extends Component{
+export default class TvLink extends Component {
     render() {
         const {movie} = this.props;
         const {id, name, vote_average, poster_path, overview, first_air_date} = movie;

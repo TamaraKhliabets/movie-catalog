@@ -30,42 +30,42 @@ export default class DataMovie extends Component {
         const genres = movie.genres.map(e => e.name).join(', ');
 
         return (
-                <div className='item_description'>
-                    <img src={poster_path ? src : cinema} alt={title}/>
-                    <table className='item_info'>
-                        <caption className='item_title'>Title: {title || name}</caption>
-                        <tbody>
-                        {
-                            (title || name) !== originalTitle ?
-                                <tr>
-                                    <td>Original title:</td>
-                                    <td>{originalTitle}</td>
-                                </tr> : null
-                        }
-                        {
-                            year ?
-                                <tr>
-                                    <td>Year:</td>
-                                    <td>{year} {endYear ? ` - ${endYear}` : null}</td>
-                                </tr> : null
-                        }
-                        {
-                            country ?
-                                <tr>
+            <div className='item_description'>
+                <img src={poster_path ? src : cinema} alt={title}/>
+                <table className='item_info'>
+                    <caption className='item_title'>Title: {title || name}</caption>
+                    <tbody>
+                    {
+                        (title || name) !== originalTitle ?
+                            <tr>
+                                <td>Original title:</td>
+                                <td>{originalTitle}</td>
+                            </tr> : null
+                    }
+                    {
+                        year ?
+                            <tr>
+                                <td>Year:</td>
+                                <td>{year} {endYear ? ` - ${endYear}` : null}</td>
+                            </tr> : null
+                    }
+                    {
+                        country ?
+                            <tr>
                                 <td>Country:</td>
                                 <td>{country}</td>
                             </tr> : null
-                        }
-                        {
-                            language ?
-                                <tr>
+                    }
+                    {
+                        language ?
+                            <tr>
                                 <td>Original language:</td>
                                 <td>{language}</td>
                             </tr> : null
-                        }
-                        {
-                            belongs_to_collection ?
-                                <tr>
+                    }
+                    {
+                        belongs_to_collection ?
+                            <tr>
                                 <td>Collection:</td>
                                 <td>
                                     <Link to={`/collection/${belongs_to_collection.id}`}>
@@ -73,38 +73,38 @@ export default class DataMovie extends Component {
                                     </Link>
                                 </td>
                             </tr> : null
-                        }
-                        {
-                            time ?
-                                <tr>
-                                    <td>Last:</td>
-                                    <td>{time} min</td>
-                                </tr> : null
-                        }
-                        {
-                            production ?
-                                <tr>
-                                    <td>Production:</td>
-                                    <td>{production}</td>
-                                </tr> : null
-                        }
-                        {
-                            genres ?
-                                <tr>
-                                    <td>Genres:</td>
-                                    <td>{genres}</td>
-                                </tr> : null
-                        }
-                        {
-                            overview ?
-                                <tr>
-                                    <td>Overview:</td>
-                                    <td>{overview}</td>
-                                </tr> : null
-                        }
-                        </tbody>
-                    </table>
-                </div>
+                    }
+                    {
+                        time ?
+                            <tr>
+                                <td>Last:</td>
+                                <td>{time} min</td>
+                            </tr> : null
+                    }
+                    {
+                        production ?
+                            <tr>
+                                <td>Production:</td>
+                                <td>{production}</td>
+                            </tr> : null
+                    }
+                    {
+                        genres ?
+                            <tr>
+                                <td>Genres:</td>
+                                <td>{genres}</td>
+                            </tr> : null
+                    }
+                    {
+                        overview ?
+                            <tr>
+                                <td>Overview:</td>
+                                <td>{overview}</td>
+                            </tr> : null
+                    }
+                    </tbody>
+                </table>
+            </div>
         )
     }
 }

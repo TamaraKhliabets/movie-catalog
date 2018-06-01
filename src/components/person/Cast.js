@@ -21,10 +21,10 @@ export default class Cast extends Component {
     nextMargin = () => {
         let {start, end} = this.state;
         if (end < this.props.cast.length - 1)
-        this.setState({
-            start: start + 9,
-            end: end + 9
-        })
+            this.setState({
+                start: start + 9,
+                end: end + 9
+            })
     };
 
     render() {

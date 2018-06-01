@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import cinema from '../../default/ninja.png';
 
-export default class PersonLinkForMovie extends Component{
+export default class PersonLinkForMovie extends Component {
 
     render() {
-        const { actor } = this.props;
+        const {actor} = this.props;
         const {id, profile_path, name, character} = actor;
 
         const src = 'https://image.tmdb.org/t/p/w154'.concat(profile_path);
