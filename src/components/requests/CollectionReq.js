@@ -21,7 +21,7 @@ export default class CollectionReq extends Component {
         const {collection} = this.state;
 
         if (!collection) return <div className='loading'/>;
-        {console.log(collection)}
+
         return (
             <div>
                 <Collection collection={collection}/>

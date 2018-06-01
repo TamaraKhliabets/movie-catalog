@@ -53,7 +53,11 @@ export default class ListItem extends Component {
                     }
                     break;
                 default:
-                    return <div className='loading'/>
+                    return (
+                        <div key={e.id} className='list_item'>
+                            <MovieLink movie={e}/>
+                        </div>
+                    );
             }
         });
 
