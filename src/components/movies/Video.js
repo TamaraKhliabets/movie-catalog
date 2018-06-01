@@ -2,23 +2,28 @@ import React, {Component} from 'react';
 
 export default class Video extends Component {
     state = {
-        url: this.props.video[0].key
+        key: this.props.video[0].key,
+        site: this.props.video[0].site
     };
 
-    setUrl = (e) => {
-        this.setState({url: this.props.video[e.target.id].key})
+    setKey = (e) => {
+        let {video} = this.props;
+        this.setState({
+            key: video[e.target.id].key,
+            site: video[e.target.id].site
+        })
     };
 
     render() {
         const {video} = this.props;
-        const {url} = this.state;
+        const {key, site} = this.state;
 
         let videos = video.map((e, i) => {
             return (
                 <button key={e.id}
                         id={i}
-                        className={(url === video[i].key) ? 'button_video_active' : 'button_video'}
-                        onClick={this.setUrl}>
+                        className={(key === video[i].key) ? 'button_video_active' : 'button_video'}
+                        onClick={this.setKey}>
                     {e.name}
                 </button>
             )
@@ -30,9 +35,12 @@ export default class Video extends Component {
                     {videos}
                 </div>
                 <div className='video_youtube'>
-                    <iframe width="560" height="315" frameBorder="0" allowFullScreen="1"
-                            src={`https://www.youtube.com/embed/${url}`}>
-                    </iframe>
+                    {
+                        site.toLowerCase() === 'youtube' ?
+                            <iframe width="560" height="315" frameBorder="0" allowFullScreen="1"
+                                    src={`https://www.youtube.com/embed/${key}`}>
+                            </iframe>: null
+                    }
                 </div>
             </div>
         )

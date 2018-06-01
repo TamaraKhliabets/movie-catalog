@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Req from "./Req";
+import Req from "../requests/Req";
 
 export default class SearchReq extends Component{
     state = {
@@ -11,8 +11,6 @@ export default class SearchReq extends Component{
 
     componentWillMount() {
         let searchParams = new URLSearchParams(this.props.location.search);
-        console.log(searchParams.get('page'));
-        console.log(searchParams.get('search'));
         this.setState({
             page: +searchParams.get('page'),
             options: `language=en-US&include_adult=false&query=${searchParams.get('search')}`,

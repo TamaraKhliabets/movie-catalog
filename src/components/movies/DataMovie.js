@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
-import {DEF_PIC_MOVIE} from "../../constants";
+import {Link} from 'react-router-dom';
+import cinema from '../../default/films.png';
 
 export default class DataMovie extends Component {
     render() {
@@ -18,62 +18,93 @@ export default class DataMovie extends Component {
             overview
         } = movie;
         const originalTitle = movie.original_title || movie.original_name;
-        const src = 'https://image.tmdb.org/t/p/w300'.concat(poster_path);
+        const src = 'https://image.tmdb.org/t/p/w342'.concat(poster_path);
         const year = (release_date || first_air_date) ? new Date(release_date).getFullYear() || new Date(first_air_date).getFullYear() : null;
         const endYear = last_air_date ? new Date(last_air_date).getFullYear() : null;
         const country = movie.production_countries ? movie.production_countries.map(e => e.name).join(', ') : movie.origin_country.join(', ');
         const language = movie.spoken_languages ? movie.spoken_languages.map(e => e.name).join(', ') : movie.original_language;
 
-        if(episode_run_time) episode_run_time.sort((a,b) => a-b).splice(1, episode_run_time.length - 2);
+        if (episode_run_time) episode_run_time.sort((a, b) => a - b).splice(1, episode_run_time.length - 2);
         const time = (runtime || episode_run_time) ? runtime || episode_run_time.join(' - ') : null;
         const production = movie.production_companies.map(e => e.name).join(', ');
         const genres = movie.genres.map(e => e.name).join(', ');
 
         return (
-            <div className='item'>
                 <div className='item_description'>
-                    <img src={src} alt={title}/>
-                    <div className='item_info'>
-                        <div className='item_title'>Title: {title || name}</div>
+                    <img src={poster_path ? src : cinema} alt={title}/>
+                    <table className='item_info'>
+                        <caption className='item_title'>Title: {title || name}</caption>
+                        <tbody>
                         {
                             (title || name) !== originalTitle ?
-                                <div className='item_original_title'>Original title: {originalTitle}</div> : null
+                                <tr>
+                                    <td>Original title:</td>
+                                    <td>{originalTitle}</td>
+                                </tr> : null
                         }
-                        <div className='item_full_data'>
-                            {
-                                year ? <div> Year: {year}</div> : null
-                            }
-                            {
-                                endYear ? <div> - {endYear}</div> : null
-                            }
-                            {
-                                country ? <div>Country: {country}</div> : null
-                            }
-                            {
-                                language ? <div>Original language: {language}</div> : null
-                            }
-                            {
-                                belongs_to_collection ?
+                        {
+                            year ?
+                                <tr>
+                                    <td>Year:</td>
+                                    <td>{year} {endYear ? ` - ${endYear}` : null}</td>
+                                </tr> : null
+                        }
+                        {
+                            country ?
+                                <tr>
+                                <td>Country:</td>
+                                <td>{country}</td>
+                            </tr> : null
+                        }
+                        {
+                            language ?
+                                <tr>
+                                <td>Original language:</td>
+                                <td>{language}</td>
+                            </tr> : null
+                        }
+                        {
+                            belongs_to_collection ?
+                                <tr>
+                                <td>Collection:</td>
+                                <td>
                                     <Link to={`/collection/${belongs_to_collection.id}`}>
-                                        <div>Collection: {belongs_to_collection.name}</div>
-                                    </Link> : null
-                            }
-                            {
-                                time ? <div>Last: {time} min</div> : null
-                            }
-                            {
-                                production ? <div>Production: {production}</div> : null
-                            }
-                            {
-                                genres ? <div>Genres: {genres}</div> : null
-                            }
-                            {
-                                overview ? <div>Overview: {overview}</div> : null
-                            }
-                        </div>
-                    </div>
+                                        {belongs_to_collection.name}
+                                    </Link>
+                                </td>
+                            </tr> : null
+                        }
+                        {
+                            time ?
+                                <tr>
+                                    <td>Last:</td>
+                                    <td>{time} min</td>
+                                </tr> : null
+                        }
+                        {
+                            production ?
+                                <tr>
+                                    <td>Production:</td>
+                                    <td>{production}</td>
+                                </tr> : null
+                        }
+                        {
+                            genres ?
+                                <tr>
+                                    <td>Genres:</td>
+                                    <td>{genres}</td>
+                                </tr> : null
+                        }
+                        {
+                            overview ?
+                                <tr>
+                                    <td>Overview:</td>
+                                    <td>{overview}</td>
+                                </tr> : null
+                        }
+                        </tbody>
+                    </table>
                 </div>
-            </div>
         )
     }
 }

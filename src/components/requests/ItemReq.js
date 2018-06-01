@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
-import DataMovie from './DataMovie';
+import DataMovie from '../movies/DataMovie';
 import Cast from '../person/Cast';
 import axios from 'axios';
 import {API_KEY, URL} from "../../constants";
-import Similar from "./Similar";
-import Video from "./Video";
-import Reviews from "./Reviews";
+import Similar from "../movies/Similar";
+import Video from "../movies/Video";
+import Reviews from "../movies/Reviews";
 
-export default class Item extends Component {
+export default class ItemReq extends Component {
     state = {
         movie: null
     };
@@ -29,10 +29,10 @@ export default class Item extends Component {
         return (
             <div>
                 <DataMovie movie={movie}/>
-                <Cast cast={movie.credits.cast}/>
-                <Video video={movie.videos.results}/>
-                <Similar movies={movie.similar.results}/>
-                {/*<Reviews reviews={movie.reviews.results}/>*/}
+                {movie.credits.cast.length ? <Cast cast={movie.credits.cast}/> : null}
+                {movie.videos.results.length ? <Video video={movie.videos.results}/> : null}
+                {movie.similar.results.length ? <Similar movies={movie.similar.results} direction={this.props.match.url}/> : null}
+                {movie.reviews.results.length ? <Reviews reviews={movie.reviews.results}/> : null}
             </div>
         )
     }

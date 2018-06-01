@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import Req from './Req';
+import Req from '../requests/Req';
 
 export default class MoviesReq extends Component {
     state = {
-        url: `/tv/popular`,
+        url: `/movie/popular`,
         options: `language=en-US`,
         page: 0,
-        direction: `tv?`
+        direction: `movie?`
     };
 
     componentWillMount() {
@@ -19,7 +19,7 @@ export default class MoviesReq extends Component {
             `language=en-US&sort_by=${sort}&include_adult=false&include_video=false&year=${today}`;
         searchParams.has('sort') ?
             this.setState({
-                url: '/discover/tv',
+                url: `/discover/movie`,
                 options: options,
                 page: +searchParams.get('page')
             }) :
@@ -28,8 +28,8 @@ export default class MoviesReq extends Component {
             })
     };
 
-
     render() {
+
         return (
             <div>
                 <Req {...this.state}/>

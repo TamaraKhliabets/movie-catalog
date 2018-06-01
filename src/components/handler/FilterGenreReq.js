@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Req from './Req';
+import Req from '../requests/Req';
 
 export default class FilterGenreReq extends Component {
     state = {

@@ -28,7 +28,10 @@ export const MENU_ITEMS = [
     },
     {
         id: 'menu_item_4',
-        direction: '/persons',
+        direction: {
+            pathname: '/persons',
+            search: '?page=1'
+        },
         icon: '👲',
         name: 'Actors'
     }
