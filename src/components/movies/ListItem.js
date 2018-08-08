@@ -1,63 +1,60 @@
 import React, {Component} from 'react';
+
+import { connect } from 'react-redux';
 import MovieLink from "../links/MovieLink";
 import TvLink from "../links/TvLink";
 import PersonLink from "../links/PersonLink";
 
-export default class ListItem extends Component {
+class ListItem extends Component {
     render() {
         const {movies, direction} = this.props;
 
         let nodeItem = movies.map(e => {
-            switch (true) {
-                case direction.includes('movie'):
+            if (direction === 'movie') {
+                return (
+                    <div key={e.id} className='list_item'>
+                        <MovieLink movie={e}/>
+                    </div>
+                );
+            } else if (direction === 'tv') {
+                return (
+                    <div key={e.id} className='list_item'>
+                        <TvLink movie={e}/>
+                    </div>
+                );
+            } else if (direction === 'persons') {
+                return (
+                    <div key={e.id} className='list_item'>
+                        <PersonLink actor={e}/>
+                    </div>
+                );
+            } else if (direction.includes('search')) {
+                let type = e.media_type;
+                if (type === 'movie') {
                     return (
                         <div key={e.id} className='list_item'>
-                            <MovieLink movie={e}/>
+                            <MovieLink key={e.id} movie={e}/>
                         </div>
                     );
-                    break;
-                case direction.includes('tv'):
+                } else if (type === 'tv') {
                     return (
                         <div key={e.id} className='list_item'>
                             <TvLink movie={e}/>
                         </div>
                     );
-                    break;
-                case direction.includes('persons'):
+                } else {
                     return (
                         <div key={e.id} className='list_item'>
                             <PersonLink actor={e}/>
                         </div>
                     );
-                    break;
-                case direction.includes('search'):
-                    let types = e.media_type;
-                    if (types === 'movie') {
-                        return (
-                            <div key={e.id} className='list_item'>
-                                <MovieLink key={e.id} movie={e}/>
-                            </div>
-                        );
-                    } else if (types === 'tv') {
-                        return (
-                            <div key={e.id} className='list_item'>
-                                <TvLink movie={e}/>
-                            </div>
-                        );
-                    } else {
-                        return (
-                            <div key={e.id} className='list_item'>
-                                <PersonLink actor={e}/>
-                            </div>
-                        );
-                    }
-                    break;
-                default:
-                    return (
-                        <div key={e.id} className='list_item'>
-                            <MovieLink movie={e}/>
-                        </div>
-                    );
+                }
+            } else {
+                return (
+                    <div key={e.id} className='list_item'>
+                        <MovieLink movie={e}/>
+                    </div>
+                );
             }
         });
 
@@ -68,3 +65,11 @@ export default class ListItem extends Component {
         );
     }
 }
+
+
+const mapStateToProps = state => ({
+   movies: state.movies,
+   direction: state.direction
+});
+
+export default connect(mapStateToProps)(ListItem);

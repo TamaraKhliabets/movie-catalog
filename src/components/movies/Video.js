@@ -3,20 +3,22 @@ import React, {Component} from 'react';
 export default class Video extends Component {
     state = {
         key: this.props.video[0].key,
-        site: this.props.video[0].site
+        site: this.props.video[0].site,
+        name: this.props.video[0].name
     };
 
     setKey = (e) => {
         let {video} = this.props;
         this.setState({
             key: video[e.target.id].key,
-            site: video[e.target.id].site
+            site: video[e.target.id].site,
+            name: video[e.target.id].name
         })
     };
 
     render() {
         const {video} = this.props;
-        const {key, site} = this.state;
+        const {key, site, name} = this.state;
 
         let videos = video.map((e, i) => {
             return (
@@ -38,7 +40,7 @@ export default class Video extends Component {
                     {
                         site.toLowerCase() === 'youtube' ?
                             <iframe width="560" height="315" frameBorder="0" allowFullScreen="1"
-                                    src={`https://www.youtube.com/embed/${key}`}>
+                                    title={name} src={`https://www.youtube.com/embed/${key}`}>
                             </iframe>: null
                     }
                 </div>

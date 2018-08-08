@@ -1,31 +1,31 @@
 import React, {Component} from 'react';
-import axios from 'axios';
+import {moviesFetchData} from "../../actions/movies";
+import {connect} from 'react-redux';
 import Carousel from '../home/Carousel';
 import {API_KEY, URL} from "../../constants";
 
-export default class Home extends Component {
-    state = {
-        movies: null
-    };
-
-    loadTopMovies = () => {
-        axios.get(`${URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=1`)
-            .then(res => this.setState({movies: res.data}))
-    };
-
+class Home extends Component {
     componentDidMount() {
-        this.loadTopMovies()
+        this.props.setMovies(`${URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=1`);
     }
 
     render() {
-        const {movies} = this.state;
-
-        if (!movies) return <div className='loading'/>;
+        const {movies} = this.props;
 
         return (
             <div>
-                <Carousel units={movies.results}/>
+                {!movies ? <div className='loading'/> : <Carousel movies={movies}/>}
             </div>
         )
     }
 }
+
+const mapStateToProps = state => ({
+    movies: state.movies
+});
+
+const mapDispatchToProps = dispatch => ({
+    setMovies: (url) => dispatch(moviesFetchData(url))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

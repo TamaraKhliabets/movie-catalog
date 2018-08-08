@@ -3,10 +3,9 @@ import {Link} from 'react-router-dom';
 
 export default class Carousel extends Component {
     render() {
-        const {units} = this.props;
-        const shortUnits = units.slice(0, 4);
+        const {movies} = this.props;
 
-        let labels = shortUnits.map((l, i) => {
+        let labels = movies.map((l, i) => {
             const src = 'https://image.tmdb.org/t/p/original'.concat(l.backdrop_path);
             return (
                 <div key={l.id} className={`carousel_item carousel_item_${i}`} id={`.carousel_item_${i}`}>

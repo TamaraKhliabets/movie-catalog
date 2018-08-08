@@ -11,6 +11,7 @@ export default class MoviesReq extends Component {
 
     componentWillMount() {
         let searchParams = new URLSearchParams(this.props.location.search);
+        console.log(searchParams);
         let sort = searchParams.get('sort');
         let year = searchParams.get('year');
         let today = new Date().getFullYear();
@@ -27,6 +28,10 @@ export default class MoviesReq extends Component {
                 page: +searchParams.get('page'),
             })
     };
+
+    componentDidMount() {
+
+    }
 
     render() {
 

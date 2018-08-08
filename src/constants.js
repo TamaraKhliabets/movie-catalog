@@ -4,35 +4,36 @@ export const URL = 'https://api.themoviedb.org/3';
 export const MENU_ITEMS = [
     {
         id: 'menu_item_1',
-        direction: '/',
+        direction: '',
+        url: '',
         icon: '🏠',
-        name: 'Home'
+        name: 'Home',
     },
     {
         id: 'menu_item_2',
-        direction: {
-            pathname: '/movie',
-            search: '?page=1'
-        },
+        direction: 'movie',
+        url: '/movie/popular',
         icon: '🎬',
         name: 'Movies'
     },
     {
         id: 'menu_item_3',
-        direction: {
-            pathname: '/tv',
-            search: '?page=1'
-        },
+        direction: 'tv',
+        url: '/tv/popular',
         icon: '📺',
         name: 'TV Show'
     },
     {
         id: 'menu_item_4',
-        direction: {
-            pathname: '/persons',
-            search: '?page=1'
-        },
+        direction: 'persons',
+        url: '',
         icon: '👲',
         name: 'Actors'
     }
 ];
+export const SET_OPTION = 'SET_OPTION';
+export const SET_DIRECTION = 'SET_DIRECTION';
+export const SET_TOTAL_PAGES = 'SET_TOTAL_PAGES';
+export const MOVIES_HAS_ERROR = 'MOVIES_HAS_ERROR';
+export const MOVIES_IS_LOADING = 'MOVIES_IS_LOADING';
+export const MOVIES_FETCH_DATA_SUCCESS = 'MOVIES_FETCH_DATA_SUCCESS';
