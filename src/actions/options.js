@@ -10,3 +10,8 @@ export const setDirection = direction => ({
     type: types.SET_DIRECTION,
     direction
 });
+
+export const setCurrentPage = page => ({
+    type: types.SET_CURRENT_PAGE,
+    page
+});

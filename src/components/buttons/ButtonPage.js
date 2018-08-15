@@ -1,42 +1,67 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 
-export default class ButtonPage extends Component {
+import {connect} from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import {setCurrentPage} from "../../actions/options";
+
+class ButtonPage extends Component {
+    setNewPage = (e) => {
+        // e.preventDefault();
+        this.props.setPage(e.target.value);
+        this.props.history.push(`/${this.props.direction}?page=${e.target.value}`)
+    };
 
 
     render() {
-        const {page, total, direction} = this.props;
+        const {page, totalPages} = this.props;
 
-        let totalPages = total > 1000 ? 1000 : total;
+        let total = totalPages > 1000 ? 1000 : totalPages;
 
         let buttonsList = Array.from({length: 5}, (e, i) => page - 2 + i)
-            .filter(e => e > 0 && e <= totalPages)
-            .map(e => {
+            .filter(e => e > 0 && e <= total)
+            .map((e, i) => {
                 return (
-                    <Link key={e} to={`/${direction}page=${e}`}
-                          className={page === e ? 'page_button_item_active' : 'page_button_item'}>{e}</Link>
+                    <button key={i}
+                            onClick={this.setNewPage}
+                            className={page === e ? 'page_button_item_active' : 'page_button_item'}
+                            value={e}>{e}</button>
                 )
             });
 
         return (
             <div className='page_button_group'>
                 {
-                    (page < 3) ? null : <Link to={`/${direction}page=1`} className='page_button_item'>&#171;</Link>
+                    (page < 3) ? null :
+                        <button onClick={this.setNewPage} className='page_button_item' value={1}>&#171;</button>
                 }
                 {
                     (page < 2) ? null :
-                        <Link to={`/${direction}page=${page - 1}`} className='page_button_item'>&#8249;</Link>
+                        <button onClick={this.setNewPage} className='page_button_item'
+                                value={+page - 1}>&#8249;</button>
                 }
                 {buttonsList}
                 {
-                    (page > totalPages - 1) ? null :
-                        <Link to={`/${direction}page=${page + 1}`} className='page_button_item'>&#8250;</Link>
+                    (page > total - 1) ? null :
+                        <button onClick={this.setNewPage} className='page_button_item'
+                                value={+page + 1}>&#8250;</button>
                 }
                 {
-                    (page > totalPages - 2) ? null :
-                        <Link to={`/${direction}page=${totalPages}`} className='page_button_item'>&#187;</Link>
+                    (page > total - 2) ? null :
+                        <button onClick={this.setNewPage} className='page_button_item' value={total}>&#187;</button>
                 }
             </div>
         )
     }
 }
+
+const mapStateToProps = state => ({
+    page: state.page,
+    totalPages: state.totalPages,
+    direction: state.direction
+});
+
+const mapDispatchToProps = dispatch => ({
+    setPage: page => dispatch(setCurrentPage(page))
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ButtonPage));

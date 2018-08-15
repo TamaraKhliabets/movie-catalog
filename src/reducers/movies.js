@@ -4,7 +4,7 @@ import * as types from '../constants';
 export const movies = (state = initialState.movies, action) => {
     switch(action.type) {
         case types.MOVIES_FETCH_DATA_SUCCESS:
-            return action.movies.results;
+            return action.movies;
         default:
             return state;
     }
@@ -31,7 +31,7 @@ export const moviesIsLoading = (state = initialState.isLoading, action) => {
 export const totalPages = (state = initialState.totalPages, action) => {
     switch (action.type) {
         case types.SET_TOTAL_PAGES:
-            return action.totalPages;
+            return action.pages;
         default:
             return state;
     }

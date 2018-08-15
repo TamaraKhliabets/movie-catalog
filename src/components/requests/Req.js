@@ -4,32 +4,37 @@ import { moviesFetchData } from "../../actions/movies";
 import {API_KEY, URL} from "../../constants";
 import ListItem from '../movies/ListItem';
 import ButtonPage from './../buttons/ButtonPage';
-// import ButtonFilter from "../buttons/ButtonFilter";
+import {setCurrentPage} from "../../actions/options";
+import ButtonFilter from "../buttons/ButtonFilter";
 
 class Req extends Component{
     componentDidUpdate(prevProps) {
-        if(prevProps.url !== this.props.url) {
-            this.props.fetchMovies(`${URL}${this.props.url}?api_key=${API_KEY}&${this.props.option}&page=1`);
+        const { url, option, page } = this.props;
+        if(prevProps.url !== url) {
+            this.props.setPage(1);
+            this.props.fetchMovies(`${URL}${url}?api_key=${API_KEY}&${option}&page=${page}`);
+            this.props.onLoad();
+        } else if(prevProps.page !== page) {
+            this.props.fetchMovies(`${URL}${url}?api_key=${API_KEY}&${option}&page=${page}`);
             this.props.onLoad();
         }
     }
 
     componentDidMount() {
-        this.props.fetchMovies(`${URL}${this.props.url}?api_key=${API_KEY}&${this.props.option}&page=1`);
+        const { url, option, page } = this.props;
+        this.props.fetchMovies(`${URL}${url}?api_key=${API_KEY}&${option}&page=${page}`);
         this.props.onLoad();
     }
 
     render() {
-        // const {movies, hasError, isLoading} = this.props;
-        //
-        // if (hasError || isLoading || !movies) return <div className='loading'/>;
+        const {movies, hasError, isLoading} = this.props;
+
+        if (hasError || isLoading || !movies) return <div className='loading'/>;
 
         return (
             <div>
-                {console.log(this.props.total_pages)}
-
-                {/*<ButtonFilter {...this.props}/>*/}
-                {/*<ListItem/>*/}
+                <ButtonFilter/>
+                <ListItem/>
                 <ButtonPage/>
             </div>
         )
@@ -40,11 +45,12 @@ const mapStateToProps = state => ({
     movies: state.movies,
     hasError: state.moviesHasError,
     isLoading: state.moviesIsLoading,
-    option: state.option
+    option: state.option,
+    page: state.page
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchMovies: (url) => dispatch(moviesFetchData(url))
+  fetchMovies: url => dispatch(moviesFetchData(url))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Req);

@@ -31,8 +31,9 @@ export const moviesFetchData = url => dispatch => {
             return res
         })
         .then(movies => {
-            dispatch(moviesFetchDataSuccess(movies.data));
-            dispatch(total_pages(movies.data))
+            dispatch(moviesFetchDataSuccess(movies.data.results));
+            return movies;
         })
+        .then(movies => dispatch(total_pages(movies.data.total_pages)))
         .catch(() => dispatch(moviesHasError(true)))
 };

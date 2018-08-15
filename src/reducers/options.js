@@ -18,3 +18,12 @@ export const direction = (state = initialState.direction, action) => {
             return state;
     }
 };
+
+export const page = (state = initialState.page, action) => {
+    switch (action.type) {
+        case types.SET_CURRENT_PAGE:
+            return action.page;
+        default:
+            return state;
+    }
+};

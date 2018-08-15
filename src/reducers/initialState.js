@@ -4,5 +4,6 @@ export default {
     isLoading: false,
     hasError: false,
     direction: '',
+    page: 1,
     option: 'language=en-US'
 }

@@ -7,22 +7,22 @@ import Search from "./options/Search";
 import User from "./auth/User";
 
 class App extends Component {
-  render() {
-    return (
-      <div className='app'>
-        <div className='title_container'>
-          <Title/>
-          <Menu/>
-          <Search/>
-          <User/>
-        </div>
-        <div className='main_container'>
-          <Routes/>
-        </div>
-        <Footer/>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className='app'>
+                <div className='title_container'>
+                    <Title/>
+                    <Menu/>
+                    <Search/>
+                    <User/>
+                </div>
+                <div className='main_container'>
+                    <Routes/>
+                </div>
+                <Footer/>
+            </div>
+        );
+    }
 }
 
 export default App;
