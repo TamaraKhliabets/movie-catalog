@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { movies, totalPages, moviesHasError, moviesIsLoading } from './movies';
-import { option, direction, page } from "./options";
+import { option, direction, page, path } from "./options";
 
 export default combineReducers({
     movies,
@@ -9,5 +9,6 @@ export default combineReducers({
     moviesIsLoading,
     option,
     direction,
-    page
+    page,
+    path
 })

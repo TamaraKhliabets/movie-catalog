@@ -8,12 +8,13 @@ class ButtonPage extends Component {
     setNewPage = (e) => {
         // e.preventDefault();
         this.props.setPage(e.target.value);
-        this.props.history.push(`/${this.props.direction}?page=${e.target.value}`)
+        this.props.history.push(`/${this.props.direction}${this.props.location.search.slice(0,-1)}${e.target.value}`)
     };
 
 
     render() {
         const {page, totalPages} = this.props;
+        {console.log()}
 
         let total = totalPages > 1000 ? 1000 : totalPages;
 

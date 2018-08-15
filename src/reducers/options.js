@@ -27,3 +27,11 @@ export const page = (state = initialState.page, action) => {
             return state;
     }
 };
+
+export const path = (state = initialState.path, action) => {
+    if(action.type === types.SET_PATH) {
+        return action.path;
+    } else {
+        return state;
+    }
+};

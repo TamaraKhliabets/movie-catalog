@@ -31,10 +31,38 @@ export const MENU_ITEMS = [
         name: 'Actors'
     }
 ];
+export const PATH = [
+    {
+        id: 1,
+        direction: '',
+        url: ''
+    },
+    {
+        id: 2,
+        direction: 'movie',
+        url: '/movie/popular'
+    },
+    {
+        id: 3,
+        direction: 'tv',
+        url: '/tv/popular'
+    },
+    {
+        id: 4,
+        direction: 'persons',
+        url: ''
+    },
+    {
+        id: 5,
+        direction: 'filter',
+        url: '/discover/movie'
+    }
+];
 export const SET_OPTION = 'SET_OPTION';
 export const SET_DIRECTION = 'SET_DIRECTION';
 export const SET_TOTAL_PAGES = 'SET_TOTAL_PAGES';
 export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+export const SET_PATH = 'SET_PATH';
 export const MOVIES_HAS_ERROR = 'MOVIES_HAS_ERROR';
 export const MOVIES_IS_LOADING = 'MOVIES_IS_LOADING';
 export const MOVIES_FETCH_DATA_SUCCESS = 'MOVIES_FETCH_DATA_SUCCESS';

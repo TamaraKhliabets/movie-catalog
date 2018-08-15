@@ -5,5 +5,6 @@ export default {
     hasError: false,
     direction: '',
     page: 1,
-    option: 'language=en-US'
+    option: 'language=en-US',
+    path: ''
 }
