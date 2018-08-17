@@ -14,7 +14,7 @@ class ButtonPage extends Component {
 
     render() {
         const {page, totalPages} = this.props;
-        {console.log()}
+        // {console.log(this.props.location)}
 
         let total = totalPages > 1000 ? 1000 : totalPages;
 

@@ -6,5 +6,7 @@ export default {
     direction: '',
     page: 1,
     option: 'language=en-US',
-    path: ''
+    genres: null,
+    genresIsLoad: false,
+    genresHasErr: false,
 }

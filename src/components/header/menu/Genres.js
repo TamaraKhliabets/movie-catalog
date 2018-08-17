@@ -1,34 +1,35 @@
 import React, {Component} from 'react';
-import axios from 'axios';
+import {connect} from 'react-redux';
+import {genresFetchData} from "../../../actions/genres";
 import {Link} from 'react-router-dom';
 import {API_KEY, URL} from "../../../constants";
 
-export default class Genres extends Component {
-    state = {
-        genres: null
-    };
-
-    loadGenres = () => {
-        axios.get(`${URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`)
-            .then(res => this.setState({genres: res.data}))
+class Genres extends Component {
+    setNewGenres = (e) => {
+        // e.preventDefault();
+        // this.props.setPage(e.target.value);
+        // this.props.history.push(`/${this.props.direction}${this.props.location.search.slice(0,-1)}${e.target.value}`)
     };
 
     componentDidMount() {
-        this.loadGenres()
+        this.props.fetchGenres(`${URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`);
     }
 
     render() {
-        const {genres} = this.state;
-
+        const {genres} = this.props;
+        {console.log(genres)}
         if (!genres) return <div className='loading'/>;
 
-        let genresLink = genres.genres.map(genre => {
+        let genresLink = genres.map(genre => {
             let {id, name} = genre;
             return (
                 <div key={id} className='sidebar_item'>
-                    <Link to={`/genres/${name.toLowerCase()}/${id}?page=1`}>
+                    <button onClick={this.setNewGenres} value={name}>
                         {name}
-                    </Link>
+                    </button>
+                    {/*<Link to={`/genres/${name.toLowerCase()}/${id}?page=1`}>*/}
+                        {/*{name}*/}
+                    {/*</Link>*/}
                 </div>
             )
         });
@@ -46,3 +47,13 @@ export default class Genres extends Component {
         )
     }
 }
+
+const mapStateToProps = state => ({
+    genres: state.genres
+});
+
+const mapDispatchToProps = dispatch => ({
+    fetchGenres: url => dispatch(genresFetchData(url))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Genres);
