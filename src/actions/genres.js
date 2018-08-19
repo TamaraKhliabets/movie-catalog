@@ -3,12 +3,12 @@ import axios from "axios";
 
 export const genresHasError = bool => ({
     type: types.GENRES_HAS_ERROR,
-    hasError: bool
+    genresHasError: bool
 });
 
 export const genresIsLoading = bool => ({
     type: types.GENRES_IS_LOADING,
-    isLoading: bool
+    genresIsLoading: bool
 });
 
 export const genresFetchDataSuccess = genres => ({
@@ -17,14 +17,14 @@ export const genresFetchDataSuccess = genres => ({
 });
 
 export const genresFetchData = url => dispatch => {
-    // dispatch(genresIsLoading(true));
+    dispatch(genresIsLoading(true));
 
     axios.get(url)
-        // .then(res => {
-        //     if(res.status !== 200) throw Error(res.statusText);
-        //     dispatch(genresIsLoading(false));
-        //     return res
-        // })
+        .then(res => {
+            if(res.status !== 200) throw Error(res.statusText);
+            dispatch(genresIsLoading(false));
+            return res
+        })
         .then(genres => dispatch(genresFetchDataSuccess(genres.data.genres)))
-        // .catch(() => dispatch(genresHasError(true)))
+        .catch(() => dispatch(genresHasError(true)))
 };

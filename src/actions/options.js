@@ -1,4 +1,5 @@
 import * as types from '../constants';
+import {push} from 'connected-react-router';
 
 
 export const setOption = option => ({
@@ -11,12 +12,26 @@ export const setDirection = direction => ({
     direction
 });
 
-export const setCurrentPage = page => ({
-    type: types.SET_CURRENT_PAGE,
+export const setPage = page => ({
+    type: types.SET_PAGE,
     page
 });
 
-export const setCurrentPath= path => ({
-    type: types.SET_PATH,
-    path
+export const setYear = year => ({
+    type: types.SET_YEAR,
+    year
 });
+
+export const setGenre = genre => ({
+    type: types.SET_GENRE,
+    genre
+});
+
+export const setSorting = sorting => ({
+    type: types.SET_SORTING,
+    sorting
+});
+
+export const changePage = query => dispatch => {
+    dispatch(push(query))
+};

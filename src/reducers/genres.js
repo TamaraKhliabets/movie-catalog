@@ -13,7 +13,7 @@ export const genres = (state = initialState.genres, action) => {
 export const genresHasErr = (state = initialState.genresHasErr, action) => {
     switch (action.type) {
         case types.GENRES_HAS_ERROR:
-            return action.genresHasErr;
+            return action.genresHasError;
         default:
             return state;
     }
@@ -22,7 +22,7 @@ export const genresHasErr = (state = initialState.genresHasErr, action) => {
 export const genresIsLoad = (state = initialState.genresIsLoad, action) => {
     switch (action.type) {
         case types.GENRES_IS_LOADING:
-            return action.genresIsLoad;
+            return action.genresIsLoading;
         default:
             return state;
     }

@@ -2,19 +2,18 @@ import React, {Component} from 'react';
 
 import {connect} from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import {setCurrentPage} from "../../actions/options";
+import {setPage} from "../../actions/options";
 
 class ButtonPage extends Component {
     setNewPage = (e) => {
         // e.preventDefault();
-        this.props.setPage(e.target.value);
+        this.props.setCurrentPage(e.target.value);
         this.props.history.push(`/${this.props.direction}${this.props.location.search.slice(0,-1)}${e.target.value}`)
     };
 
 
     render() {
         const {page, totalPages} = this.props;
-        // {console.log(this.props.location)}
 
         let total = totalPages > 1000 ? 1000 : totalPages;
 
@@ -62,7 +61,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    setPage: page => dispatch(setCurrentPage(page))
+    setCurrentPage: page => dispatch(setPage(page))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ButtonPage));

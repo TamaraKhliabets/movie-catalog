@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {moviesFetchData} from "../../actions/movies";
-import {setCurrentPage} from "../../actions/options";
+import {setPage} from "../../actions/options";
 import {API_KEY, URL} from "../../constants";
 import ListItem from '../movies/ListItem';
 import ButtonPage from './../buttons/ButtonPage';
@@ -12,7 +12,7 @@ class Req extends Component {
     componentDidUpdate(prevProps) {
         const {url, option, page} = this.props;
         if (prevProps.url !== url) {
-            this.props.setPage(1);
+            this.props.setCurrentPage(1);
             this.props.fetchMovies(`${URL}${url}?api_key=${API_KEY}&${option}&page=${page}`);
             this.props.onLoad();
         } else if (prevProps.page !== page) {
@@ -53,7 +53,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     fetchMovies: url => dispatch(moviesFetchData(url)),
-    setPage: page => dispatch(setCurrentPage(page))
+    setCurrentPage: page => dispatch(setPage(page))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Req);

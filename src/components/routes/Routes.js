@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Switch, Route} from 'react-router-dom';
+import {Switch, Route, Link} from 'react-router-dom';
 
 import ItemReq from '../requests/ItemReq';
 import PersonReq from "../handler/PersonReq";
@@ -15,6 +15,9 @@ export default class Routes extends Component {
     render() {
         return (
             <div>
+                <header>
+                    <Link to={'/'}/>
+                </header>
                 <Switch>
                     <Route exact path='/' component={() => <Home/>}/>
                     <Route path='/:direction?' component={Page}/>

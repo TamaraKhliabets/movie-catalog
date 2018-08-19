@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {genresFetchData} from "../../../actions/genres";
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 import {API_KEY, URL} from "../../../constants";
 
 class Genres extends Component {

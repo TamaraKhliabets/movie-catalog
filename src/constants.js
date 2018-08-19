@@ -61,11 +61,16 @@ export const PATH = [
 export const SET_OPTION = 'SET_OPTION';
 export const SET_DIRECTION = 'SET_DIRECTION';
 export const SET_TOTAL_PAGES = 'SET_TOTAL_PAGES';
-export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
-export const SET_PATH = 'SET_PATH';
+export const SET_PAGE = 'SET_PAGE';
+export const SET_SORTING = 'SET_SORTING';
+export const SET_YEAR = 'SET_YEAR';
+export const SET_GENRE = 'SET_GENRE';
+export const SHOW_FILTER = 'SHOW_FILTER';
+
 export const MOVIES_HAS_ERROR = 'MOVIES_HAS_ERROR';
 export const MOVIES_IS_LOADING = 'MOVIES_IS_LOADING';
 export const MOVIES_FETCH_DATA_SUCCESS = 'MOVIES_FETCH_DATA_SUCCESS';
+
 export const GENRES_HAS_ERROR = 'GENRES_HAS_ERROR';
 export const GENRES_IS_LOADING = 'GENRES_IS_LOADING';
 export const GENRES_FETCH_DATA_SUCCESS = 'GENRES_FETCH_DATA_SUCCESS';

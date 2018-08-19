@@ -1,12 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {setDirection, setOption} from "../../actions/options";
-import {withRouter} from 'react-router-dom';
+import {setDirection, setOption, setSorting, setYear, changePage} from "../../actions/options";
 
 class ButtonFilter extends Component {
     state = {
-        sortBy: 'popularity.desc',
-        year: 0,
         showFilter: false
     };
 
@@ -14,34 +11,39 @@ class ButtonFilter extends Component {
         this.setState({showFilter: !this.state.showFilter})
     };
 
-    setSorting = (e) => {
-        this.setState({sortBy: e.target.value});
-    };
-
-    setYear = (e) => {
-        this.setState({year: e.target.value});
-    };
-
     handleSubmit = () => {
-        let {sortBy, year} = this.state;
+        let {
+            sorting,
+            year,
+            changePage,
+            setOption,
+            setDirection
+        } = this.props;
         let today = new Date().getFullYear();
-        this.props.setCurrentDirection('filter');
-        if (year === 0) {
-            this.props.setCurrentOption(`language=en-US&sort_by=${sortBy}&include_adult=false&include_video=false&year=${today}`);
-            this.props.history.push(`/filter?sort_by=${sortBy}&page=1`)
-        } else {
-            this.props.setCurrentOption(`language=en-US&sort_by=${sortBy}&include_adult=false&include_video=false&primary_release_year=${year}`);
-            this.props.history.push(`/filter?sort_by=${sortBy}&year=${year}&page=1`)
-        }
+
+        let optionForApi = [
+            'language=en-US&include_adult=false&include_video=false',
+            (sorting) ? `&sort_by=${sorting}` : '',
+            (+year) ? `&primary_release_year=${year}` : `&year=${today}`
+        ].join('');
+        let optionForRoute = [
+            (sorting) ? `&sort=${sorting}` : '',
+            (+year) ? `&year=${year}` : ''
+        ].join('');
+        changePage(`/filter?${optionForRoute}`);
+        setDirection('filter');
+        setOption(optionForApi);
+        this.setState({showFilter: !this.state.showFilter})
     };
 
     render() {
-        let {showFilter, sortBy, year} = this.state;
+        let {showFilter} = this.state;
+        let {sorting, year, setSorting, setYear} = this.props;
 
         let yearOption = Array.from({length: 30}, (e, i) => {
             let setYear = new Date().getFullYear() - i;
             return (
-                <option key={i} value={setYear}>{setYear}</option>
+                <option key={i}>{setYear}</option>
             )
         });
 
@@ -55,19 +57,22 @@ class ButtonFilter extends Component {
                 {showFilter ?
                     (<div className='filter_form'>
                         <div className='filter_name'>Order:</div>
-                        <select value={sortBy} onChange={this.setSorting} className='filter_select'>
+                        <select value={sorting ? sorting : 'popularity.desc'}
+                                onChange={e => setSorting(e.target.value)}
+                                className='filter_select'>
                             <option value='popularity.desc'>Most popular</option>
                             <option value='release_date.desc'>Release date</option>
                             <option value='vote_count.desc'>Most vote count</option>
                         </select>
                         <div className='filter_name'>Year:</div>
-                        <select value={year} onChange={this.setYear} className='filter_select'>
+                        <select value={year ? year : 0}
+                                onChange={e => setYear(e.target.value)}
+                                className='filter_select'>
                             <option value='0'>All</option>
                             {yearOption}
                         </select>
-                        <button
-                            className='filter_form_submit'
-                            onClick={this.handleSubmit}>
+                        <button className='filter_form_submit'
+                                onClick={this.handleSubmit}>
                             Show
                         </button>
                     </div>) : null}
@@ -76,14 +81,18 @@ class ButtonFilter extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    direction: state.direction,
-    option: state.option
+const mapStateToProps = ({direction, sorting, year}) => ({
+    direction,
+    sorting,
+    year
 });
 
-const mapDispatchToProps = dispatch => ({
-    setCurrentOption: option => dispatch(setOption(option)),
-    setCurrentDirection: direction => dispatch(setDirection(direction))
-});
+const mapDispatchToProps = {
+    setOption,
+    setDirection,
+    setSorting,
+    setYear,
+    changePage
+};
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ButtonFilter));
+export default connect(mapStateToProps, mapDispatchToProps)(ButtonFilter);

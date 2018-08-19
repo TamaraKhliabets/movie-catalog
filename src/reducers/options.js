@@ -1,5 +1,6 @@
 import initialState from './initialState';
 import * as types from '../constants';
+import {SHOW_FILTER} from "../constants";
 
 export const option = (state = initialState.option, action) => {
     switch(action.type) {
@@ -21,17 +22,41 @@ export const direction = (state = initialState.direction, action) => {
 
 export const page = (state = initialState.page, action) => {
     switch (action.type) {
-        case types.SET_CURRENT_PAGE:
+        case types.SET_PAGE:
             return action.page;
         default:
             return state;
     }
 };
 
-export const path = (state = initialState.path, action) => {
-    if(action.type === types.SET_PATH) {
-        return action.path;
+export const year = (state = initialState.year, action) => {
+    if(action.type === types.SET_YEAR) {
+        return action.year;
     } else {
         return state;
     }
 };
+
+export const sorting = (state = initialState.sorting, action) => {
+    if(action.type === types.SET_SORTING) {
+        return action.sorting;
+    } else {
+        return state;
+    }
+};
+
+export const genre = (state = initialState.genre, action) => {
+    if(action.type === types.SET_GENRE) {
+        return action.genre;
+    } else {
+        return state;
+    }
+};
+
+export const showFilter = (state = initialState.isShowingFilter, action) => {
+    if(action.type === SHOW_FILTER) {
+        return action.isShowingFilter;
+    } else {
+        return state;
+    }
+}
