@@ -1,35 +1,34 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {genresFetchData} from "../../../actions/genres";
-// import {Link} from 'react-router-dom';
+import {changePage, setGenre, setOption} from "../../../actions/options";
 import {API_KEY, URL} from "../../../constants";
 
 class Genres extends Component {
     setNewGenres = (e) => {
-        // e.preventDefault();
-        // this.props.setPage(e.target.value);
-        // this.props.history.push(`/${this.props.direction}${this.props.location.search.slice(0,-1)}${e.target.value}`)
+        let {setGenre, changePage, setOption} = this.props;
+        let genre = e.target.value;
+        setGenre(genre);
+        setOption(`language=en-US&include_adult=false&include_video=false&sort_by=popularity.desc&with_genres=${genre.split('_')[1]}`);
+        changePage(`/genres?genre=${genre.split('_')[0]}&page=1`)
     };
 
     componentDidMount() {
-        this.props.fetchGenres(`${URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`);
+        this.props.genresFetchData(`${URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`);
     }
 
     render() {
         const {genres} = this.props;
-        {console.log(genres)}
+
         if (!genres) return <div className='loading'/>;
 
         let genresLink = genres.map(genre => {
             let {id, name} = genre;
             return (
                 <div key={id} className='sidebar_item'>
-                    <button onClick={this.setNewGenres} value={name}>
+                    <button onClick={this.setNewGenres} value={`${name}_${id}`.toLowerCase()}>
                         {name}
                     </button>
-                    {/*<Link to={`/genres/${name.toLowerCase()}/${id}?page=1`}>*/}
-                        {/*{name}*/}
-                    {/*</Link>*/}
                 </div>
             )
         });
@@ -48,12 +47,15 @@ class Genres extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    genres: state.genres
+const mapStateToProps = ({genres}) => ({
+    genres
 });
 
-const mapDispatchToProps = dispatch => ({
-    fetchGenres: url => dispatch(genresFetchData(url))
-});
+const mapDispatchToProps = {
+    genresFetchData,
+    changePage,
+    setGenre,
+    setOption
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Genres);

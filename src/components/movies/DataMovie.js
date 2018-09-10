@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import cinema from '../../default/films.png';
 
-export default class DataMovie extends Component {
+class DataMovie extends Component {
     render() {
         const {movie} = this.props;
         const {
@@ -108,3 +109,9 @@ export default class DataMovie extends Component {
         )
     }
 }
+
+const mapStateToProps = ({movie}) => ({
+    movie
+});
+
+export default connect(mapStateToProps)(DataMovie);

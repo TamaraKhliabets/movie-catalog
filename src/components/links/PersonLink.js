@@ -12,7 +12,7 @@ export default class PersonLink extends Component {
 
         return (
             <div className='link_item'>
-                <Link to={`/persons/${id}`}>
+                <Link to={`/person/${id}`}>
                     <img className='link_image' src={profile_path ? src : cinema} alt={name}/>
                     <div className='link_item_title'>{name}</div>
                 </Link>

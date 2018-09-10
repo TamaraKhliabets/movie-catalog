@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
-export default class Reviews extends Component{
+class Reviews extends Component{
     render() {
         let nodeReviews = this.props.reviews.map(e => {
             return (
@@ -19,3 +20,9 @@ export default class Reviews extends Component{
         )
     }
 }
+
+const mapStateToProps = ({reviews}) => ({
+    reviews
+});
+
+export default connect(mapStateToProps)(Reviews);

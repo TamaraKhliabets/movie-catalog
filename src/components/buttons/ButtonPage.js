@@ -1,14 +1,19 @@
 import React, {Component} from 'react';
 
 import {connect} from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import {setPage} from "../../actions/options";
+import {setPage, changePage} from "../../actions/options";
 
 class ButtonPage extends Component {
     setNewPage = (e) => {
-        // e.preventDefault();
-        this.props.setCurrentPage(e.target.value);
-        this.props.history.push(`/${this.props.direction}${this.props.location.search.slice(0,-1)}${e.target.value}`)
+        let {direction, sorting, year, genre, setPage, changePage} = this.props;
+        let optionForRoute = [
+            (sorting) ? `sort=${sorting}&` : '',
+            (+year) ? `year=${year}&` : '',
+            (genre) ? `genre=${genre.split('_')[1]}&` : ''
+        ].join('');
+        let page = e.target.value;
+        setPage(page);
+        changePage(`/${direction}?${optionForRoute}page=${page}`)
     };
 
 
@@ -54,14 +59,18 @@ class ButtonPage extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    page: state.page,
-    totalPages: state.totalPages,
-    direction: state.direction
+const mapStateToProps = ({page, totalPages, direction, sorting, year, genre}) => ({
+    page,
+    totalPages,
+    direction,
+    sorting,
+    year,
+    genre
 });
 
-const mapDispatchToProps = dispatch => ({
-    setCurrentPage: page => dispatch(setPage(page))
-});
+const mapDispatchToProps = {
+    setPage,
+    changePage
+};
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ButtonPage));
+export default connect(mapStateToProps, mapDispatchToProps)(ButtonPage);

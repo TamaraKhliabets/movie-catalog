@@ -1,10 +1,10 @@
 import React from 'react';
-import CurrentPage from "./CurrentPage";
+import CurrentItemPage from "./CurrentItemPage";
 
 const Page = ({ match: { params } }) => {
     return (
         <div>
-            <CurrentPage direction={params.direction}/>
+            <CurrentItemPage direction={params.direction} id={params.id}/>
         </div>
     )
 };

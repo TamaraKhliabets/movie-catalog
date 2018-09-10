@@ -12,5 +12,12 @@ export default {
     genres: null,
     genresIsLoad: false,
     genresHasErr: false,
-    isShowingFilter: false
+    isShowingFilter: false,
+    movie: null,
+    movieIsLoad: false,
+    movieHasErr: false,
+    cast: null,
+    video: null,
+    similar: null,
+    reviews: null
 }

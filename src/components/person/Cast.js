@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import PersonLinkForMovie from "../links/PersonLinkForMovie";
+import {connect} from 'react-redux';
 
 
-export default class Cast extends Component {
+class Cast extends Component {
     state = {
         start: 0,
         end: 9
@@ -53,3 +54,10 @@ export default class Cast extends Component {
         )
     }
 }
+
+
+const mapStateToProps = ({cast}) => ({
+    cast
+});
+
+export default connect(mapStateToProps)(Cast);

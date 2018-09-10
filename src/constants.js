@@ -25,7 +25,7 @@ export const MENU_ITEMS = [
     },
     {
         id: 'menu_item_4',
-        direction: 'persons',
+        direction: 'person',
         url: '',
         icon: '👲',
         name: 'Actors'
@@ -49,13 +49,28 @@ export const PATH = [
     },
     {
         id: 4,
-        direction: 'persons',
-        url: ''
+        direction: 'person',
+        url: '/person/popular'
     },
     {
         id: 5,
         direction: 'filter',
         url: '/discover/movie'
+    },
+    {
+        id: 6,
+        direction: 'genres',
+        url: '/discover/movie'
+    },
+    {
+        id: 7,
+        direction: 'search',
+        url: '/search/multi'
+    },
+    {
+        id: 8,
+        direction: '',
+        url: ''
     }
 ];
 export const SET_OPTION = 'SET_OPTION';
@@ -74,3 +89,11 @@ export const MOVIES_FETCH_DATA_SUCCESS = 'MOVIES_FETCH_DATA_SUCCESS';
 export const GENRES_HAS_ERROR = 'GENRES_HAS_ERROR';
 export const GENRES_IS_LOADING = 'GENRES_IS_LOADING';
 export const GENRES_FETCH_DATA_SUCCESS = 'GENRES_FETCH_DATA_SUCCESS';
+
+export const MOVIE_HAS_ERROR = 'MOVIE_HAS_ERROR';
+export const MOVIE_IS_LOADING = 'MOVIE_IS_LOADING';
+export const MOVIE_FETCH_DATA_SUCCESS = 'MOVIE_FETCH_DATA_SUCCESS';
+export const SET_CAST = 'SET_CAST';
+export const SET_VIDEO = 'SET_VIDEO';
+export const SET_SIMILAR = 'SET_SIMILAR';
+export const SET_REVIEWS = 'SET_REVIEWS';

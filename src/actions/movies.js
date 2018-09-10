@@ -16,7 +16,7 @@ export const moviesFetchDataSuccess = movies => ({
     movies
 });
 
-export const total_pages = pages => ({
+export const totalPages = pages => ({
     type: types.SET_TOTAL_PAGES,
     pages
 });
@@ -34,6 +34,6 @@ export const moviesFetchData = url => dispatch => {
             dispatch(moviesFetchDataSuccess(movies.data.results));
             return movies;
         })
-        .then(movies => dispatch(total_pages(movies.data.total_pages)))
+        .then(movies => dispatch(totalPages(movies.data.total_pages)))
         .catch(() => dispatch(moviesHasError(true)))
 };

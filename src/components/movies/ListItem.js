@@ -22,13 +22,13 @@ class ListItem extends Component {
                         <TvLink movie={e}/>
                     </div>
                 );
-            } else if (direction === 'persons') {
+            } else if (direction === 'person') {
                 return (
                     <div key={e.id} className='list_item'>
                         <PersonLink actor={e}/>
                     </div>
                 );
-            } else if (direction.includes('search')) {
+            } else if (direction === 'search') {
                 let type = e.media_type;
                 if (type === 'movie') {
                     return (

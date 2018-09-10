@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {setDirection, setOption, setSorting, setYear, changePage} from "../../actions/options";
+import {setDirection, setOption, setSorting, setYear, changePage, setPage} from "../../actions/options";
 
 class ButtonFilter extends Component {
     state = {
@@ -15,24 +15,29 @@ class ButtonFilter extends Component {
         let {
             sorting,
             year,
+            genre,
             changePage,
             setOption,
-            setDirection
+            setDirection,
+            setPage
         } = this.props;
         let today = new Date().getFullYear();
 
         let optionForApi = [
             'language=en-US&include_adult=false&include_video=false',
             (sorting) ? `&sort_by=${sorting}` : '',
-            (+year) ? `&primary_release_year=${year}` : `&year=${today}`
+            (+year) ? `&primary_release_year=${year}` : `&year=${today}`,
+            (genre) ? `with_genres=${genre.split('_')[1]}` : ''
         ].join('');
         let optionForRoute = [
-            (sorting) ? `&sort=${sorting}` : '',
-            (+year) ? `&year=${year}` : ''
+            (sorting) ? `sort=${sorting}&` : '',
+            (+year) ? `year=${year}&` : '',
+            (genre) ? `genre=${genre.split('_')[0]}&` : ''
         ].join('');
-        changePage(`/filter?${optionForRoute}`);
+        changePage(`/filter?${optionForRoute}page=1`);
         setDirection('filter');
         setOption(optionForApi);
+        setPage(1);
         this.setState({showFilter: !this.state.showFilter})
     };
 
@@ -81,10 +86,11 @@ class ButtonFilter extends Component {
     }
 }
 
-const mapStateToProps = ({direction, sorting, year}) => ({
+const mapStateToProps = ({direction, sorting, year, genre}) => ({
     direction,
     sorting,
-    year
+    year,
+    genre
 });
 
 const mapDispatchToProps = {
@@ -92,6 +98,7 @@ const mapDispatchToProps = {
     setDirection,
     setSorting,
     setYear,
+    setPage,
     changePage
 };
 

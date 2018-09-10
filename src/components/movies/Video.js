@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
-export default class Video extends Component {
+class Video extends Component {
     state = {
         key: this.props.video[0].key,
         site: this.props.video[0].site,
@@ -48,3 +49,9 @@ export default class Video extends Component {
         )
     }
 }
+
+const mapStateToProps = ({video}) => ({
+    video
+});
+
+export default connect(mapStateToProps)(Video);
