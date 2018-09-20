@@ -19,5 +19,11 @@ export default {
     cast: null,
     video: null,
     similar: null,
-    reviews: null
+    reviews: null,
+    person: null,
+    personIsLoad: false,
+    personHasErr: false,
+    personMovie: null,
+    personTv: null,
+    showMovies: true
 }

@@ -3,6 +3,7 @@ import {movies, totalPages, moviesHasError, moviesIsLoading} from './movies';
 import {option, direction, page, year, genre, sorting, showFilter} from "./options";
 import {genres, genresHasErr, genresIsLoad} from "./genres";
 import {movie, movieHasErr, movieIsLoad, cast, video, similar, reviews} from './movie';
+import {person, personHasErr, personIsLoad, personMovie, personTv, showMovies} from "./person";
 
 export default combineReducers({
     movies,
@@ -25,5 +26,11 @@ export default combineReducers({
     cast,
     video,
     similar,
-    reviews
+    reviews,
+    person,
+    personHasErr,
+    personIsLoad,
+    personMovie,
+    personTv,
+    showMovies
 })

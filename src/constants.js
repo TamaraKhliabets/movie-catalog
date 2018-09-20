@@ -97,3 +97,10 @@ export const SET_CAST = 'SET_CAST';
 export const SET_VIDEO = 'SET_VIDEO';
 export const SET_SIMILAR = 'SET_SIMILAR';
 export const SET_REVIEWS = 'SET_REVIEWS';
+
+export const PERSON_HAS_ERROR = 'PERSON_HAS_ERROR';
+export const PERSON_IS_LOADING = 'PERSON_IS_LOADING';
+export const PERSON_FETCH_DATA_SUCCESS = 'PERSON_FETCH_DATA_SUCCESS';
+export const PERSON_MOVIE = 'PERSON_MOVIE';
+export const PERSON_TV = 'PERSON_TV';
+export const SHOW_MOVIES = 'SHOW_MOVIES';

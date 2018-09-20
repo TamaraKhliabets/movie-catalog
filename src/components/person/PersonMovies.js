@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import ListItem from "../movies/ListItem";
+import {connect} from 'react-redux';
+import MovieLink from "../links/MovieLink";
 
-export default class PersonMovies extends Component {
+class PersonMovies extends Component {
     state = {
         start: 0,
-        end: 4,
+        end: 20,
         visibleButtons: false
     };
 
@@ -12,35 +13,43 @@ export default class PersonMovies extends Component {
         let {start, end} = this.state;
         if (start > 0) {
             this.setState({
-                start: start - 4,
-                end: end - 4
+                start: start - 20,
+                end: end - 20
             })
         }
     };
 
     nextMovies = () => {
         let {start, end} = this.state;
-        if (end < this.props.movie.length - 1)
+        if (end < this.props.personMovie.length - 1)
             this.setState({
-                start: start + 4,
-                end: end + 4
+                start: start + 20,
+                end: end + 20
             })
     };
 
     componentDidMount() {
-        if (this.props.movie.length >= 4)
+        if (this.props.personMovie.length >= 20)
             this.setState({visibleButtons: true})
     }
 
     render() {
-        let {movie, direction} = this.props;
+        let {personMovie} = this.props;
         let {start, end, visibleButtons} = this.state;
 
-        let actualMovies = movie.slice(start, end);
+        // let actualMovies = personMovie.slice(start, end).map(e => {
+        //     return (
+        //         <div key={e.id} className='list_item'>
+        //             <MovieLink movie={e}/>
+        //         </div>
+        //     )
+        // });
 
         return (
             <div>
-                <ListItem movies={actualMovies} direction={direction}/>
+                <div className='list'>
+                    {/*{actualMovies}*/}
+                </div>
                 {
                     visibleButtons ?
                         <div className='btns_arrow'>
@@ -53,3 +62,9 @@ export default class PersonMovies extends Component {
         )
     }
 }
+
+const mapStateToProps = ({personMovie}) => ({
+    personMovie
+});
+
+export default connect(mapStateToProps)(PersonMovies);

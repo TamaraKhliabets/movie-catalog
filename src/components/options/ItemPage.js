@@ -1,12 +1,13 @@
 import React from 'react';
 import CurrentItemPage from "./CurrentItemPage";
+import CurrentPersonPage from './CurrentPersonPage';
 
 const Page = ({ match: { params } }) => {
-    return (
-        <div>
-            <CurrentItemPage direction={params.direction} id={params.id}/>
-        </div>
-    )
+    let direction = params.direction;
+    let id = params.id;
+    return (direction === 'person') ?
+        <CurrentPersonPage direction={direction} id={id}/> :
+        <CurrentItemPage direction={direction} id={id}/>
 };
 
 export default Page;

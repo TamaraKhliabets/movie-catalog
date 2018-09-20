@@ -4,14 +4,13 @@ import {movieFetchData} from "../../actions/movie";
 import ItemReq from "../requests/ItemReq";
 
 
-const mapStateToProps = ({movie, cast, video, similar, reviews, direction}, ownProps) => ({
+const mapStateToProps = ({movie, cast, video, similar, reviews}, ownProps) => ({
     url: `/${ownProps.direction}/${ownProps.id}`,
     movie,
     cast,
     video,
     similar,
-    reviews,
-    direction
+    reviews
 });
 
 const mapDispatchToProps = dispatch => ({
