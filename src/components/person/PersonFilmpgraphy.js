@@ -5,8 +5,7 @@ import PersonMovies from "./PersonMovies";
 
 class PersonFilmpgraphy extends Component{
     changeActualMovies = () => {
-        this.props.setActualMovies(!this.props.showMovies);
-        console.log(this.props.showMovies)
+        this.props.setActualMovies(!this.props.showMovies)
     };
 
     render () {
@@ -16,7 +15,7 @@ class PersonFilmpgraphy extends Component{
             <div>
                 {personMovie ? <button onClick={this.changeActualMovies} className='subtitle'>{person.name}'s movies</button> : null}
                 {personTv ? <button onClick={this.changeActualMovies} className='subtitle'>{person.name}'s TV shows</button> : null}
-                {/*<PersonMovies/>*/}
+                <PersonMovies/>
             </div>
         )
     }

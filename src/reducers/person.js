@@ -53,4 +53,4 @@ export const personTv = (state = initialState.personTv, action) => {
         default:
             return state;
     }
-}
+};

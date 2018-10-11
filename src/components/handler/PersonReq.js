@@ -14,7 +14,7 @@ export default class PersonReq extends Component {
         const {person} = this.props;
 
         if (!person) return <div className='loading'/>;
-        console.log(person);
+        // console.log(person);
         return (
             <div>
                 <PersonData/>

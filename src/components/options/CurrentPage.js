@@ -8,13 +8,13 @@ import {moviesFetchData} from "../../actions/movies";
 
 const getCurrentDirection = direction => PATH.find(e => e.direction === direction).url;
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = ({option, page, movies, hasError, isLoading}, ownProps) => ({
     url: getCurrentDirection(ownProps.direction),
-    option: state.option,
-    page: state.page,
-    movies: state.movies,
-    hasError: state.hasError,
-    isLoading: state.isLoading
+    option,
+    page,
+    movies,
+    hasError,
+    isLoading
 
 });
 

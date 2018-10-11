@@ -1,8 +1,8 @@
 export default {
     movies: null,
-    totalPages: 0,
     isLoading: false,
     hasError: false,
+    totalPages: 0,
     direction: '',
     page: 1,
     genre: null,

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import MovieLink from "../links/MovieLink";
+import {personIsLoad} from "../../reducers/person";
 
 class PersonMovies extends Component {
     state = {
@@ -28,16 +29,16 @@ class PersonMovies extends Component {
             })
     };
 
-    componentDidMount() {
-        if (this.props.personMovie.length >= 20)
-            this.setState({visibleButtons: true})
-    }
+    // componentDidMount() {
+    //     if (this.props.personMovie.length >= 20)
+    //         this.setState({visibleButtons: true})
+    // }
 
     render() {
-        let {personMovie} = this.props;
-        let {start, end, visibleButtons} = this.state;
-
-        // let actualMovies = personMovie.slice(start, end).map(e => {
+        let {personMovie, personIsLoad} = this.props;
+        // let {start, end, visibleButtons} = this.state;
+console.log(personIsLoad);
+        // let actualMovies = personMovie.map(e => {
         //     return (
         //         <div key={e.id} className='list_item'>
         //             <MovieLink movie={e}/>
@@ -50,21 +51,22 @@ class PersonMovies extends Component {
                 <div className='list'>
                     {/*{actualMovies}*/}
                 </div>
-                {
-                    visibleButtons ?
-                        <div className='btns_arrow'>
-                            <button onClick={this.prevMovies} className='btn_arrow'>prev</button>
-                            <button onClick={this.nextMovies} className='btn_arrow'>next</button>
-                        </div>
-                        : null
-                }
+                {/*{*/}
+                    {/*visibleButtons ?*/}
+                        {/*<div className='btns_arrow'>*/}
+                            {/*<button onClick={this.prevMovies} className='btn_arrow'>prev</button>*/}
+                            {/*<button onClick={this.nextMovies} className='btn_arrow'>next</button>*/}
+                        {/*</div>*/}
+                        {/*: null*/}
+                {/*}*/}
             </div>
         )
     }
 }
 
-const mapStateToProps = ({personMovie}) => ({
-    personMovie
+const mapStateToProps = ({personMovie, personIsLoad}) => ({
+    personMovie,
+    personIsLoad
 });
 
 export default connect(mapStateToProps)(PersonMovies);

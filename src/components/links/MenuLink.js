@@ -1,10 +1,17 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {changePage, setDirection} from "../../actions/options";
 
 const MenuLink = ({direction, children}) => (
-    <Link to={`/${direction}?page=1`}>
+    <input onClick={e => setDirection.bind(this, e.target.value)} value={direction}>
         {children}
-    </Link>
+    </input>
 );
 
-export default MenuLink;
+const mapDispatchToProps = {
+    setDirection,
+    changePage
+};
+
+
+export default connect(null, mapDispatchToProps)(MenuLink);
