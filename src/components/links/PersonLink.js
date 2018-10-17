@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 import cinema from '../../default/ninja.png';
 
 export default class PersonLink extends Component {
-
     render() {
         const {actor} = this.props;
         const {id, profile_path, name} = actor;

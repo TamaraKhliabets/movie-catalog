@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 
 import {personFetchData} from "../../actions/person";
-import PersonReq from "../handler/PersonReq";
+import PersonReq from "../../components/requests/PersonReq";
 
 
 const mapStateToProps = ({person, personMovie, personTv}, ownProps) => ({
@@ -11,8 +11,8 @@ const mapStateToProps = ({person, personMovie, personTv}, ownProps) => ({
     personTv
 });
 
-const mapDispatchToProps = dispatch => ({
-    fetchPerson: url => dispatch(personFetchData(url))
-});
+const mapDispatchToProps = {
+    personFetchData
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(PersonReq);

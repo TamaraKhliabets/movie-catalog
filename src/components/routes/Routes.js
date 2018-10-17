@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import {Switch, Route} from 'react-router-dom';
 
 import Home from '../requests/Home';
-import CollectionReq from "../requests/CollectionReq";
-import UserPage from "../auth/UserPage";
-import Page from "../options/Page";
-import ItemPage from "../options/ItemPage";
+import Page from "../../containers/pages/Page";
+import ItemPage from "../../containers/pages/ItemPage";
+
+// import UserPage from "../auth/UserPage";
 
 export default class Routes extends Component {
     render() {
@@ -15,9 +15,8 @@ export default class Routes extends Component {
                     <Route exact path='/' component={Home}/>
                     <Route exact path='/:direction' component={Page}/>
                     <Route exact path='/:direction/:id' component={ItemPage}/>
-                    {/*<Route path='/person/:id' component={ItemPage}/>*/}
-                    <Route path='/collection/:id' component={({match}) => <CollectionReq match={match}/>}/>
-                    <Route path='/account' component={() => <UserPage/>}/>
+                    {/*<Route path='/collection/:id' component={CollectionReq}/>*/}
+                    {/*<Route path='/account' component={() => <UserPage/>}/>*/}
                 </Switch>
             </div>
         )

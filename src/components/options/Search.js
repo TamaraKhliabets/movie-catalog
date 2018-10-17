@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {changePage, setDirection, setOption, setPage} from "../../actions/options";
 
-class Search extends Component {
+export default class Search extends Component {
     state = {
         search: ''
     };
@@ -32,12 +30,3 @@ class Search extends Component {
         )
     }
 }
-
-const mapDispatchToProps = {
-    changePage,
-    setDirection,
-    setOption,
-    setPage
-};
-
-export default connect(null, mapDispatchToProps)(Search);

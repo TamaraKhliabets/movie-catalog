@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 import cinema from '../../default/videos.png';
 
 export default class MovieLink extends Component {
-
     render() {
         const {movie} = this.props;
         const {id, title, vote_average, poster_path, overview, release_date} = movie;
@@ -32,3 +31,4 @@ export default class MovieLink extends Component {
         )
     }
 }
+

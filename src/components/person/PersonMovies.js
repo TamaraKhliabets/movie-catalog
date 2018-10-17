@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
 import MovieLink from "../links/MovieLink";
-import {personIsLoad} from "../../reducers/person";
+import TvLink from '../links/TvLink';
 
-class PersonMovies extends Component {
+export default class PersonMovies extends Component {
     state = {
         start: 0,
         end: 20,
@@ -22,51 +21,69 @@ class PersonMovies extends Component {
 
     nextMovies = () => {
         let {start, end} = this.state;
-        if (end < this.props.personMovie.length - 1)
+        let {showMovies, personMovie, personTv} = this.props;
+        let lastMovie = showMovies ? personMovie.length - 1 : personTv - 1;
+        if (end < lastMovie)
             this.setState({
                 start: start + 20,
                 end: end + 20
             })
     };
 
-    // componentDidMount() {
-    //     if (this.props.personMovie.length >= 20)
-    //         this.setState({visibleButtons: true})
-    // }
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.showMovies !== this.props.showMovies) {
+            this.setState({
+                start: 0,
+                end: 20
+            })
+        }
+    }
+
+    componentDidMount() {
+        if (this.props.personMovie.length >= 20)
+            this.setState({visibleButtons: true})
+    }
 
     render() {
-        let {personMovie, personIsLoad} = this.props;
-        // let {start, end, visibleButtons} = this.state;
-console.log(personIsLoad);
-        // let actualMovies = personMovie.map(e => {
-        //     return (
-        //         <div key={e.id} className='list_item'>
-        //             <MovieLink movie={e}/>
-        //         </div>
-        //     )
-        // });
+        let {personMovie, personTv, showMovies} = this.props;
+        let {start, end, visibleButtons} = this.state;
+
+        if (!personMovie || !personTv) return <div className='loading'/>;
+
+        let actualMovies;
+
+        if (showMovies) {
+            actualMovies = personMovie.map(e => {
+                return (
+                    <div key={e.id} className='list_item'>
+                        <MovieLink movie={e}/>
+                    </div>
+                )
+            }).slice(start, end);
+        } else {
+            actualMovies = personTv.map(e => {
+                return (
+                    <div key={e.id} className='list_item'>
+                        <TvLink movie={e}/>
+                    </div>
+                )
+            }).slice(start, end);
+        }
 
         return (
             <div>
                 <div className='list'>
-                    {/*{actualMovies}*/}
+                    {actualMovies}
                 </div>
-                {/*{*/}
-                    {/*visibleButtons ?*/}
-                        {/*<div className='btns_arrow'>*/}
-                            {/*<button onClick={this.prevMovies} className='btn_arrow'>prev</button>*/}
-                            {/*<button onClick={this.nextMovies} className='btn_arrow'>next</button>*/}
-                        {/*</div>*/}
-                        {/*: null*/}
-                {/*}*/}
+                {
+                    visibleButtons ?
+                        <div className='btns_arrow'>
+                            <button onClick={this.prevMovies} className='btn_arrow'>prev</button>
+                            <button onClick={this.nextMovies} className='btn_arrow'>next</button>
+                        </div>
+                        : null
+                }
             </div>
         )
     }
 }
-
-const mapStateToProps = ({personMovie, personIsLoad}) => ({
-    personMovie,
-    personIsLoad
-});
-
-export default connect(mapStateToProps)(PersonMovies);

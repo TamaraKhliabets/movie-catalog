@@ -1,9 +1,9 @@
 export default {
+    direction: '',
     movies: null,
     isLoading: false,
     hasError: false,
     totalPages: 0,
-    direction: '',
     page: 1,
     genre: null,
     sorting: null,
@@ -12,7 +12,6 @@ export default {
     genres: null,
     genresIsLoad: false,
     genresHasErr: false,
-    isShowingFilter: false,
     movie: null,
     movieIsLoad: false,
     movieHasErr: false,
@@ -25,5 +24,11 @@ export default {
     personHasErr: false,
     personMovie: null,
     personTv: null,
-    showMovies: true
+    persons: null,
+    personsIsLoad: false,
+    personsHasErr: false,
+    showMovies: true,
+    collection: null,
+    collectionIsLoad: false,
+    collectionHasErr: false,
 }

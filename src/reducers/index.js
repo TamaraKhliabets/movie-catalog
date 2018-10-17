@@ -1,9 +1,11 @@
 import {combineReducers} from 'redux';
 import {movies, totalPages, moviesHasError, moviesIsLoading} from './movies';
-import {option, direction, page, year, genre, sorting, showFilter} from "./options";
+import {option, direction, page, year, genre, sorting} from "./options";
 import {genres, genresHasErr, genresIsLoad} from "./genres";
 import {movie, movieHasErr, movieIsLoad, cast, video, similar, reviews} from './movie';
 import {person, personHasErr, personIsLoad, personMovie, personTv, showMovies} from "./person";
+import {persons, personsHasErr, personsIsLoad} from "./persons";
+import {collection, collectionHasErr, collectionIsLoad} from "./collection";
 
 export default combineReducers({
     movies,
@@ -19,7 +21,6 @@ export default combineReducers({
     genres,
     genresHasErr,
     genresIsLoad,
-    showFilter,
     movie,
     movieHasErr,
     movieIsLoad,
@@ -32,5 +33,11 @@ export default combineReducers({
     personIsLoad,
     personMovie,
     personTv,
-    showMovies
+    persons,
+    personsHasErr,
+    personsIsLoad,
+    showMovies,
+    collection,
+    collectionHasErr,
+    collectionIsLoad
 })

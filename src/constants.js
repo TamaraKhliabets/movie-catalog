@@ -5,29 +5,21 @@ export const MENU_ITEMS = [
     {
         id: 'menu_item_1',
         direction: '',
-        url: '',
-        icon: '🏠',
         name: 'Home',
     },
     {
         id: 'menu_item_2',
         direction: 'movie',
-        url: '/movie/popular',
-        icon: '🎬',
         name: 'Movies'
     },
     {
         id: 'menu_item_3',
         direction: 'tv',
-        url: '/tv/popular',
-        icon: '📺',
         name: 'TV Show'
     },
     {
         id: 'menu_item_4',
         direction: 'person',
-        url: '',
-        icon: '👲',
         name: 'Actors'
     }
 ];
@@ -54,23 +46,28 @@ export const PATH = [
     },
     {
         id: 5,
-        direction: 'filter',
+        direction: 'filter_movie',
         url: '/discover/movie'
     },
     {
         id: 6,
+        direction: 'filter_tv',
+        url: '/discover/tv'
+    },
+    {
+        id: 7,
         direction: 'genres',
         url: '/discover/movie'
     },
     {
-        id: 7,
+        id: 8,
         direction: 'search',
         url: '/search/multi'
     },
     {
-        id: 8,
-        direction: '',
-        url: ''
+        id: 9,
+        direction: 'collection',
+        url: '/collection'
     }
 ];
 export const SET_OPTION = 'SET_OPTION';
@@ -98,9 +95,17 @@ export const SET_VIDEO = 'SET_VIDEO';
 export const SET_SIMILAR = 'SET_SIMILAR';
 export const SET_REVIEWS = 'SET_REVIEWS';
 
+export const PERSONS_HAS_ERROR = 'PERSONS_HAS_ERROR';
+export const PERSONS_IS_LOADING = 'PERSONS_IS_LOADING';
+export const PERSONS_FETCH_DATA_SUCCESS = 'PERSONS_FETCH_DATA_SUCCESS';
+
 export const PERSON_HAS_ERROR = 'PERSON_HAS_ERROR';
 export const PERSON_IS_LOADING = 'PERSON_IS_LOADING';
 export const PERSON_FETCH_DATA_SUCCESS = 'PERSON_FETCH_DATA_SUCCESS';
 export const PERSON_MOVIE = 'PERSON_MOVIE';
 export const PERSON_TV = 'PERSON_TV';
 export const SHOW_MOVIES = 'SHOW_MOVIES';
+
+export const COLLECTION_HAS_ERROR = 'COLLECTION_HAS_ERROR';
+export const COLLECTION_IS_LOADING = 'COLLECTION_IS_LOADING';
+export const COLLECTION_FETCH_DATA_SUCCESS = 'COLLECTION_FETCH_DATA_SUCCESS';

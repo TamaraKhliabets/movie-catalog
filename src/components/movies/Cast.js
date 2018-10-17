@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 import PersonLinkForMovie from "../links/PersonLinkForMovie";
-import {connect} from 'react-redux';
 
-
-class Cast extends Component {
+export default class Cast extends Component {
     state = {
         start: 0,
         end: 9
@@ -32,9 +30,11 @@ class Cast extends Component {
         const {cast} = this.props;
         const {start, end} = this.state;
 
-        let listActors = cast.slice(start, end).map((e, i) => {
+        if (!cast || !cast.length) return null;
+
+        let listActors = cast.slice(start, end).map(e => {
             return (
-                <div key={e.id} id={i}>
+                <div key={e.id}>
                     <PersonLinkForMovie actor={e}/>
                 </div>
             )
@@ -54,10 +54,3 @@ class Cast extends Component {
         )
     }
 }
-
-
-const mapStateToProps = ({cast}) => ({
-    cast
-});
-
-export default connect(mapStateToProps)(Cast);

@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {setDirection, setOption, setSorting, setYear, changePage, setPage} from "../../actions/options";
 
-class ButtonFilter extends Component {
+export default class ButtonFilter extends Component {
     state = {
         showFilter: false
     };
@@ -13,6 +11,7 @@ class ButtonFilter extends Component {
 
     handleSubmit = () => {
         let {
+            direction,
             sorting,
             year,
             genre,
@@ -34,8 +33,8 @@ class ButtonFilter extends Component {
             (+year) ? `year=${year}&` : '',
             (genre) ? `genre=${genre.split('_')[0]}&` : ''
         ].join('');
-        changePage(`/filter?${optionForRoute}page=1`);
-        setDirection('filter');
+        changePage(`/filter_${direction}${optionForRoute}page=1`);
+        setDirection(`filter_${direction}`);
         setOption(optionForApi);
         setPage(1);
         this.setState({showFilter: !this.state.showFilter})
@@ -85,21 +84,3 @@ class ButtonFilter extends Component {
         )
     }
 }
-
-const mapStateToProps = ({direction, sorting, year, genre}) => ({
-    direction,
-    sorting,
-    year,
-    genre
-});
-
-const mapDispatchToProps = {
-    setOption,
-    setDirection,
-    setSorting,
-    setYear,
-    setPage,
-    changePage
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ButtonFilter);

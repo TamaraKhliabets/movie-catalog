@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
 import {MONTH} from "../../constants";
 import cinema from '../../default/cat.png';
 
-class PersonData extends Component {
+export default class PersonData extends Component {
     render() {
         const {person} = this.props;
         const {name, birthday, place_of_birth, deathday, profile_path, biography} = person;
@@ -54,9 +53,3 @@ class PersonData extends Component {
         )
     }
 }
-
-const mapStateToProps = ({person}) => ({
-    person
-});
-
-export default connect(mapStateToProps)(PersonData);

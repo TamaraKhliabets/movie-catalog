@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 
 import {movieFetchData} from "../../actions/movie";
-import ItemReq from "../requests/ItemReq";
+import ItemReq from "../../components/requests/ItemReq";
 
 
 const mapStateToProps = ({movie, cast, video, similar, reviews}, ownProps) => ({
@@ -13,8 +13,8 @@ const mapStateToProps = ({movie, cast, video, similar, reviews}, ownProps) => ({
     reviews
 });
 
-const mapDispatchToProps = dispatch => ({
-    fetchMovie: url => dispatch(movieFetchData(url))
-});
+const mapDispatchToProps = {
+    movieFetchData
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItemReq);

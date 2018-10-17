@@ -1,30 +1,52 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 import {API_KEY, URL} from "../../constants";
-import Collection from "../options/Collection";
+import cinema from "../../default/oscar.png";
+import MovieLink from "../links/MovieLink";
 
 export default class CollectionReq extends Component {
-    state = {
-        collection: null
-    };
-
-    loadCollection = () => {
-        axios.get(`${URL}/collection/${this.props.match.params.id}?api_key=${API_KEY}&language=en-US`)
-            .then(res => this.setState({collection: res.data}))
-    };
-
     componentDidMount() {
-        this.loadCollection()
-    };
+        const {url, collectionFetchData} = this.props;
+        collectionFetchData(`${URL}${url}?api_key=${API_KEY}&language=en-US`);
+    }
 
     render() {
-        const {collection} = this.state;
+        const {collection} = this.props;
 
-        if (!collection) return <div className='loading'/>;
+        if (!collection) return null;
+
+        const {name, overview, poster_path, parts} = collection;
+        const src = 'https://image.tmdb.org/t/p/w342'.concat(poster_path);
+
+        let nodeItem = parts.map(e => {
+            return (
+                <div key={e.id} className='list_item'>
+                    <MovieLink movie={e}/>
+                </div>
+            );
+        });
+
 
         return (
             <div>
-                <Collection collection={collection}/>
+                <div className='item_description'>
+                    <img src={poster_path ? src : cinema} alt={name}/>
+                    <table className='item_info'>
+                        <caption className='item_title'>{name}</caption>
+                        <tbody>
+                        {
+                            overview ?
+                                <tr>
+                                    <td>Overview:</td>
+                                    <td>{overview}</td>
+                                </tr>
+                                : null
+                        }
+                        </tbody>
+                    </table>
+                </div>
+                <div className='list'>
+                    {nodeItem}
+                </div>
             </div>
         )
     }

@@ -1,30 +1,27 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {MENU_ITEMS} from "../../../constants";
-import Genres from "./Genres";
-import MenuLink from '../../links/MenuLink';
 
-class Menu extends Component{
-
-
-    render() {
-        let menu = MENU_ITEMS.map((item) => {
-            return (
-                <div key={item.id} className='menu_item'>
-                    <MenuLink direction={item.direction}>
-                        <span role="img" aria-label="icon" className='menu_item_icon'>{item.icon}</span>
-                        <div className='menu_item_name'>{item.name}</div>
-                    </MenuLink>
-                </div>
-            )
-        });
-
+const Menu = props => {
+    let menu = MENU_ITEMS.map(item => {
         return (
-            <div className='menu'>
-                {menu}
-                <Genres/>
-            </div>
+            <button key={item.id}
+                    onClick={() => {
+                        props.setDirection(`${item.direction}?`);
+                        props.setPage(1);
+                        props.setOption('language=en-US');
+                        props.changePage(`/${item.direction}`)
+                    }}
+                    className='menu_item menu_item_name'>
+                {item.name}
+            </button>
         )
-    }
-}
+    });
+
+    return (
+        <div className='menu'>
+            {menu}
+        </div>
+    )
+};
 
 export default Menu;

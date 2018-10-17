@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
 
-class Reviews extends Component{
+export default class Reviews extends Component{
     render() {
-        let nodeReviews = this.props.reviews.map(e => {
+        const {reviews} = this.props;
+
+        if (!reviews ||!reviews.length) return null;
+
+        let nodeReviews = reviews.map(e => {
             return (
                 <div className='review' key={e.id}>
                     <div className='review_author'>{e.author}:</div>
@@ -20,9 +23,3 @@ class Reviews extends Component{
         )
     }
 }
-
-const mapStateToProps = ({reviews}) => ({
-    reviews
-});
-
-export default connect(mapStateToProps)(Reviews);

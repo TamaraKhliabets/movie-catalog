@@ -1,20 +1,22 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
 import MovieLink from "../links/MovieLink";
 import TvLink from "../links/TvLink";
 
-class Similar extends Component {
+export default class Similar extends Component {
     render() {
         const {similar, direction} = this.props;
+
+        if(!similar || !similar.length) return null;
+
         const shortMovies = similar.slice(0, 4);
         let nodeItem = shortMovies.map(e => {
-            if (direction === 'movie') {
+            if (direction === 'movie?') {
                 return (
                     <div key={e.id} className='list_item'>
                         <MovieLink movie={e}/>
                     </div>
                 );
-            } else if (direction === 'tv') {
+            } else if (direction === 'tv?') {
                 return (
                     <div key={e.id} className='list_item'>
                         <TvLink movie={e}/>
@@ -33,10 +35,3 @@ class Similar extends Component {
         )
     }
 }
-
-const mapStateToProps = ({similar, direction}) => ({
-    similar,
-    direction
-});
-
-export default connect(mapStateToProps)(Similar);

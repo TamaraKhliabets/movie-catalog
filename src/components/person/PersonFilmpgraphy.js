@@ -1,35 +1,24 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {setActualMovies} from "../../actions/person";
-import PersonMovies from "./PersonMovies";
+import PersonMovies from "../../containers/person/PersonMovies";
 
-class PersonFilmpgraphy extends Component{
-    changeActualMovies = () => {
-        this.props.setActualMovies(!this.props.showMovies)
-    };
+export default class PersonFilmpgraphy extends Component {
+    render() {
+        let {person, personMovie, personTv, setActualMovies, showMovies} = this.props;
 
-    render () {
-        let {person, personMovie, personTv} = this.props;
+        if (!personMovie || !personTv) return <div className='loading'/>;
 
         return (
             <div>
-                {personMovie ? <button onClick={this.changeActualMovies} className='subtitle'>{person.name}'s movies</button> : null}
-                {personTv ? <button onClick={this.changeActualMovies} className='subtitle'>{person.name}'s TV shows</button> : null}
+                {personMovie.length ?
+                    <button onClick={() => setActualMovies(!showMovies)} className='subtitle'>
+                        {person.name}'s movies</button> :
+                    null}
+                {personTv.length ?
+                    <button onClick={() => setActualMovies(!showMovies)} className='subtitle'>
+                        {person.name}'s TV shows</button> :
+                    null}
                 <PersonMovies/>
             </div>
         )
     }
 }
-
-const mapStateToProps = ({showMovies, person, personMovie, personTv}) => ({
-    showMovies,
-    person,
-    personMovie,
-    personTv
-});
-
-const mapDispatchToProps = {
-    setActualMovies
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(PersonFilmpgraphy);

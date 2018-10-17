@@ -1,9 +1,6 @@
 import {connect} from 'react-redux';
-import Req from "../requests/Req";
-
+import MovieReq from "../../components/requests/MovieReq";
 import {PATH} from '../../constants';
-
-import {setDirection} from "../../actions/options";
 import {moviesFetchData} from "../../actions/movies";
 
 const getCurrentDirection = direction => PATH.find(e => e.direction === direction).url;
@@ -18,9 +15,8 @@ const mapStateToProps = ({option, page, movies, hasError, isLoading}, ownProps) 
 
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-    onLoad: () => dispatch(setDirection(ownProps.direction)),
-    fetchMovies: url => dispatch(moviesFetchData(url))
-});
+const mapDispatchToProps = {
+    moviesFetchData
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Req);
+export default connect(mapStateToProps, mapDispatchToProps)(MovieReq);

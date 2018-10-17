@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
 
-import {connect} from 'react-redux';
-import {setPage, changePage} from "../../actions/options";
-
-class ButtonPage extends Component {
+export default class ButtonPage extends Component {
     setNewPage = (e) => {
         let {direction, sorting, year, genre, setPage, changePage} = this.props;
         let optionForRoute = [
@@ -13,7 +10,7 @@ class ButtonPage extends Component {
         ].join('');
         let page = e.target.value;
         setPage(page);
-        changePage(`/${direction}?${optionForRoute}page=${page}`)
+        changePage(`/${direction}${optionForRoute}page=${page}`)
     };
 
 
@@ -58,19 +55,3 @@ class ButtonPage extends Component {
         )
     }
 }
-
-const mapStateToProps = ({page, totalPages, direction, sorting, year, genre}) => ({
-    page,
-    totalPages,
-    direction,
-    sorting,
-    year,
-    genre
-});
-
-const mapDispatchToProps = {
-    setPage,
-    changePage
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ButtonPage);
