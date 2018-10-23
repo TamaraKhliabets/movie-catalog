@@ -2,73 +2,73 @@ export const MONTH = ['January', 'February', 'March', 'April', 'May', 'June', 'J
 export const API_KEY = '3ac6cd2a0ae9933683f5ccc84181b596';
 export const URL = 'https://api.themoviedb.org/3';
 export const MENU_ITEMS = [
-    {
-        id: 'menu_item_1',
-        direction: '',
-        name: 'Home',
-    },
-    {
-        id: 'menu_item_2',
-        direction: 'movie',
-        name: 'Movies'
-    },
-    {
-        id: 'menu_item_3',
-        direction: 'tv',
-        name: 'TV Show'
-    },
-    {
-        id: 'menu_item_4',
-        direction: 'person',
-        name: 'Actors'
-    }
+	{
+		id: 'menu_item_1',
+		direction: '',
+		name: 'Home',
+	},
+	{
+		id: 'menu_item_2',
+		direction: 'movie',
+		name: 'Movies',
+	},
+	{
+		id: 'menu_item_3',
+		direction: 'tv',
+		name: 'TV Show',
+	},
+	{
+		id: 'menu_item_4',
+		direction: 'person',
+		name: 'Actors',
+	},
 ];
 export const PATH = [
-    {
-        id: 1,
-        direction: '',
-        url: ''
-    },
-    {
-        id: 2,
-        direction: 'movie',
-        url: '/movie/popular'
-    },
-    {
-        id: 3,
-        direction: 'tv',
-        url: '/tv/popular'
-    },
-    {
-        id: 4,
-        direction: 'person',
-        url: '/person/popular'
-    },
-    {
-        id: 5,
-        direction: 'filter_movie',
-        url: '/discover/movie'
-    },
-    {
-        id: 6,
-        direction: 'filter_tv',
-        url: '/discover/tv'
-    },
-    {
-        id: 7,
-        direction: 'genres',
-        url: '/discover/movie'
-    },
-    {
-        id: 8,
-        direction: 'search',
-        url: '/search/multi'
-    },
-    {
-        id: 9,
-        direction: 'collection',
-        url: '/collection'
-    }
+	{
+		id: 1,
+		direction: '',
+		url: '',
+	},
+	{
+		id: 2,
+		direction: 'movie',
+		url: '/movie/popular',
+	},
+	{
+		id: 3,
+		direction: 'tv',
+		url: '/tv/popular',
+	},
+	{
+		id: 4,
+		direction: 'person',
+		url: '/person/popular',
+	},
+	{
+		id: 5,
+		direction: 'filter_movie',
+		url: '/discover/movie',
+	},
+	{
+		id: 6,
+		direction: 'filter_tv',
+		url: '/discover/tv',
+	},
+	{
+		id: 7,
+		direction: 'genres',
+		url: '/discover/movie',
+	},
+	{
+		id: 8,
+		direction: 'search',
+		url: '/search/multi',
+	},
+	{
+		id: 9,
+		direction: 'collection',
+		url: '/collection',
+	},
 ];
 export const SET_OPTION = 'SET_OPTION';
 export const SET_DIRECTION = 'SET_DIRECTION';

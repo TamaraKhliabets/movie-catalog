@@ -1,16 +1,16 @@
-import {connect} from 'react-redux';
-import {setActualMovies} from "../../actions/person";
-import PersonFilmpgraphy from "../../components/person/PersonFilmpgraphy";
+import { connect } from 'react-redux';
+import { setActualMovies } from '../../actions/person';
+import PersonFilmpgraphy from '../../components/person/PersonFilmpgraphy';
 
-const mapStateToProps = ({showMovies, person, personMovie, personTv}) => ({
-    showMovies,
-    person,
-    personMovie,
-    personTv
+const mapStateToProps = ({ showMovies, person, personMovie, personTv }) => ({
+	showMovies,
+	person,
+	personMovie,
+	personTv,
 });
 
 const mapDispatchToProps = {
-    setActualMovies
+	setActualMovies,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PersonFilmpgraphy);

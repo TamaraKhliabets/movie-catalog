@@ -1,7 +1,6 @@
 //fonts
 @import url('https://fonts.googleapis.com/css?family=Chicle|Metal+Mania|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i');
 
-
 //variables
 @custom: 320px;
 @phones: 480px;
@@ -21,7 +20,6 @@
 @yellow: #ffd545;
 @white: #ffffff;
 
-
 //RESET
 body {
   margin: 0;
@@ -32,8 +30,8 @@ body {
 
 input, button {
   border: 0;
-  &:focus{
-    outline:0;
+  &:focus {
+    outline: 0;
   }
   background: none
 }
@@ -43,11 +41,13 @@ a {
   color: @black;
 }
 
-
 //LOADING
 @keyframes loading {
-  to {transform: rotate(360deg);}
+  to {
+    transform: rotate(360deg);
+  }
 }
+
 .loading:before {
   content: '';
   box-sizing: border-box;
@@ -64,9 +64,8 @@ a {
   animation: loading .6s linear infinite;
 }
 
-
 //APP
-.app{
+.app {
   width: 100%;
 }
 
@@ -76,7 +75,7 @@ a {
   flex-direction: row;
   justify-content: flex-start;
   width: 100%;
-  @media only screen and (max-width: @wideScreen){
+  @media only screen and (max-width: @wideScreen) {
     flex-direction: column;
     align-items: stretch;
   }
@@ -86,11 +85,10 @@ a {
   margin: 1% 0;
 }
 
-
 //TITLE
 .title {
   font-family: 'Chicle', cursive;
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 400;
   color: @orange;
   border: 3px double @anthracite;
@@ -100,69 +98,53 @@ a {
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
-  @media only screen and (max-width: @wideScreen){
+  @media only screen and (max-width: @wideScreen) {
     width: 100%;
   }
 }
-
 
 //MENU
 .menu {
+  padding: 0 3%;
   display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  width: 50%;
-  @media only screen and (max-width: @wideScreen){
-    width: 100%;
-    padding-bottom: 2%;
+  align-items: center;
+  justify-content: space-around;
+  //  @media only screen and (max-width: @wideScreen){
+  //    width: 100%;
+  //    padding-bottom: 2%;
+  //  }
+}
+
+.menu_item {
+  width: 6em;
+  color: @black;
+  &:hover {
+    color: @yellow;
+    transition: .3s;
   }
 }
 
-.menu_item{
-  box-sizing: border-box;
-  padding: 0 5%;
-  text-align: center;
-  width: 20%;
-  a {
-    color: @black;
-    &:hover {
-      color: @yellow;
-      transition: .3s;
-    }
-  }
+.menu_item_name {
+  font-size: 20px;
 }
-
-.menu_item_icon {
-  font-size: 200%;
-}
-
-.menu_item_name{
-  overflow: hidden;
-  white-space: nowrap;
-  @media only screen and (max-width: @tablets){
-    display: none;
-  }
-}
-
-
 
 //SIDEBAR
 .sidebar {
   display: none;
   position: absolute;
   top: 100%;
-  left:0;
+  left: 0;
   padding: 2% 5%;
   font-family: 'Stalinist One', cursive;
   font-size: 12px;
   z-index: 2;
   background-color: @anthracite;
-  width: 750%;
-  a {
+  width: 500%;
+  button {
     color: @white;
-    display: block;
-    &:active {
-      font-size: 12px;
+
+    &:hover {
+      font-size: 1.1em;
       transition: .5s;
     }
   }
@@ -191,11 +173,10 @@ a {
   transition: .3s;
 }
 
-.menu_item_sidebar:hover .sidebar{
+.menu_item_sidebar:hover .sidebar {
   display: flex;
   flex-flow: row wrap;
 }
-
 
 //CAROUSEL
 .carousel_wrapper {
@@ -207,7 +188,7 @@ a {
   overflow: hidden;
 }
 
-.carousel_item{
+.carousel_item {
   width: 100%;
   height: 100vh;
   position: absolute;
@@ -254,7 +235,7 @@ a {
   animation-delay: 0s;
 }
 
-.carousel_name{
+.carousel_name {
   position: absolute;
   top: 70%;
   width: 100%;
@@ -263,7 +244,7 @@ a {
   padding: 5px 10px;
   color: @white;
   box-sizing: border-box;
-  a{
+  a {
     color: @white;
     text-align: center;
     font-size: 1.5em;
@@ -271,16 +252,15 @@ a {
   }
 }
 
-.carousel_image{
+.carousel_image {
   width: 100%;
   height: 100%;
 }
 
-.carousel_overview{
+.carousel_overview {
   font-size: 15px;
   text-align: left;
 }
-
 
 //BUTTONFILTER
 .options {
@@ -300,16 +280,16 @@ a {
   letter-spacing: 2px;
 }
 
-.filter_button_active{
+.filter_button_active {
   opacity: .8;
 }
 
-.filter_arrow_down::before{
+.filter_arrow_down::before {
   content: '\25BC';
   padding-right: 5px;
 }
 
-.filter_arrow_up::before{
+.filter_arrow_up::before {
   content: '\25B2';
   padding-right: 5px;
 }
@@ -322,7 +302,7 @@ a {
   background: @anthracite;
 }
 
-.filter_form_submit{
+.filter_form_submit {
   margin-top: 1%;
   padding: 1% 0;
   background: @orange;
@@ -332,12 +312,12 @@ a {
   color: @white;
   outline: none;
   text-align: center;
-  &:active{
+  &:active {
     background: @anthracite
   }
 }
 
-.filter_name{
+.filter_name {
   padding: .2em 0;
   font-size: 0.8em;
   font-weight: bold;
@@ -345,16 +325,15 @@ a {
   text-align: start;
 }
 
-.filter_select{
+.filter_select {
   background: @lightGray;
   padding: .3em 0;
   font-size: 1em;
   outline-color: @orange;
-  option{
+  option {
     background: @lightGray;
   }
 }
-
 
 //SEARCH
 .search {
@@ -366,17 +345,17 @@ a {
 }
 
 .search_button {
-  width:85%;
+  width: 85%;
   background: transparent;
   color: @anthracite;
   padding: 2%;
   box-sizing: border-box;
-  &:focus{
+  &:focus {
     color: @yellow
   }
 }
 
-.search_button_button{
+.search_button_button {
   border: none;
   background: transparent;
   color: @anthracite;
@@ -386,11 +365,10 @@ a {
   color: @anthracite;
 }
 
-
 //LISTITEM
 .list {
   margin: 0 10%;
-  display:  flex;
+  display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
 }
@@ -403,8 +381,6 @@ a {
   box-sizing: border-box;
   overflow: hidden;
 }
-
-
 
 //links
 .link_item {
@@ -426,7 +402,7 @@ a {
   background: linear-gradient(to top, @black, transparent);
 }
 
-.link_image{
+.link_image {
   width: 100%;
   position: absolute;
   margin: auto;
@@ -452,38 +428,32 @@ a {
 }
 
 .link_item_hover {
-   position: absolute;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   z-index: 1;
-   box-sizing: border-box;
-   border: 4px solid @yellow;
-   opacity: 0;
-   padding: 2%;
-   overflow: hidden;
-   background: linear-gradient(to bottom, @white 50%, transparent 95%);
- }
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  box-sizing: border-box;
+  border: 4px solid @yellow;
+  opacity: 0;
+  padding: 2%;
+  overflow: hidden;
+  background: linear-gradient(to bottom, @white 50%, transparent 95%);
+}
 
 .link_item:hover .link_item_hover {
   transition: .5s;
   opacity: 1;
 }
 
-.link_item_overiew{
+.link_item_overiew {
   font-size: .7em;
   text-align: left;
   background: linear-gradient(to bottom, @black 50%, transparent 95%);
   -webkit-background-clip: text;
   color: transparent;
 }
-
-
-
-
-
-
 
 //.link_item_vote::before,
 //.link_item_vote span::before {
@@ -499,24 +469,10 @@ a {
 //  overflow: hidden;
 //}
 
-
-
-
-
 //.link_item_hover_inner{
 //  background: white;
 //  z-index: 0;
 //}
-
-
-
-
-
-
-
-
-
-
 
 //BUTTONPAGE
 .page_button_group {
@@ -539,28 +495,11 @@ a {
   }
 }
 
-
-.page_button_item_active{
+.page_button_item_active {
   background-color: @gray;
   color: @yellow;
   font-weight: bold;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //DATAMOVIE
 .item_description {
@@ -579,27 +518,27 @@ a {
 .item_info {
   width: 100%;
   padding-left: 1em;
-  td:first-child{
+  td:first-child {
     font-weight: lighter;
     vertical-align: top;
   }
-  a{
+  a {
     font-weight: bolder;
   }
 }
 
 //CAST
-.cast_wrapper{
+.cast_wrapper {
   height: 100%;
   width: 100%;
 }
 
-.cast_main_content{
+.cast_main_content {
   display: flex;
   //flex-flow: row nowrap;
 }
 
-.cast{
+.cast {
   width: 90%;
   margin: 0 auto;
   display: flex;
@@ -607,7 +546,7 @@ a {
   justify-content: space-around;
 }
 
-.cast_arrow{
+.cast_arrow {
   margin: .1em;
   padding: .3em;
   min-width: 2em;
@@ -621,7 +560,7 @@ a {
 }
 
 //PERSONLINK
-.person_Link{
+.person_Link {
   width: 110px;
   height: 100%;
   text-align: center;
@@ -630,11 +569,11 @@ a {
   background: @gray;
 }
 
-.person_link_image{
+.person_link_image {
   width: 100%;
 }
 
-.character{
+.character {
   color: #828280;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -647,7 +586,7 @@ a {
   display: none;
 }
 
-.person_Link:hover .character{
+.person_Link:hover .character {
   display: block;
 }
 
@@ -665,10 +604,8 @@ a {
 //  font-size: 10px;
 //}
 
-
-
 //VIDEO
-.video{
+.video {
   //text-align: center;
   margin: 1% auto;
   width: 560px;
@@ -677,13 +614,13 @@ a {
   border: 1px dotted @anthracite;
 }
 
-.video_buttons{
+.video_buttons {
   display: flex;
   align-items: stretch;
   font-size: 2em;
 }
 
-.button_video{
+.button_video {
   width: 560px / 3;
   padding: 5px 15px;
   background: @gray;
@@ -691,7 +628,7 @@ a {
   //border: .5px dotted @anthracite;
 }
 
-.button_video_active{
+.button_video_active {
   width: 560px / 3;
   padding: 5px 15px;
   background: @aquamarine;
@@ -699,78 +636,75 @@ a {
 }
 
 .button_video:focus {
-  outline:0;
+  outline: 0;
 }
 
-
 //SIMILAR, CAST, REVIEWS
-.subtitle{
+.subtitle {
   padding: 0 0 .5em 1em;
   font-size: 2em;
   font-weight: bold;
   color: @anthracite
 }
 
-
 //REVIEWS
-.review{
+.review {
   margin: 2em 1em;
   padding: 1em;
   box-shadow: 0 0 10px @anthracite;
 }
 
-.review_author{
+.review_author {
   font-weight: bold;
   font-style: italic;
   color: @gray;
 }
 
-.review_content{
+.review_content {
   font-size: .8em;
 }
 
 //PERSONMOVIES
-.btns_arrow{
+.btns_arrow {
   text-align: center;
 }
 
-.btn_arrow{
+.btn_arrow {
   border: none;
   background: none;
   padding: 0 1em;
   color: @gray;
   font-size: 1.2em;
   font-weight: bold;
-  &:hover{
+  &:hover {
     transition: .5s;
     color: @aquamarine;
   }
 }
 
 //FOOTER
-.footer{
+.footer {
   background: @lightGray;
   padding: 1em;
   text-align: right;
-  a{
+  a {
     font-weight: lighter;
   }
 }
 
-
 //FOOTER
-.user{
+.user {
   margin-left: auto;
   padding: 0 1em;
   border: 4px double @anthracite;
   background: @gray;
 }
 
-.user_btn{
+.user_btn {
   background: transparent;
 }
 
-.user_log{
+.user_log {
   position: absolute;
   top: 20%;
   right: 1%;

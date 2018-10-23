@@ -1,11 +1,13 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 export default class Title extends Component {
-    render() {
-        return (
-            <div className='title'>
+	render() {
+		return (
+			<div className="title">
                 What to watch???
-            </div>
-        )
-    }
+
+
+   </div>
+		);
+	}
 }
