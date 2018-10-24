@@ -6,6 +6,7 @@
     "axios": "^0.18.0",
     "body-parser": "^1.18.2",
     "connected-react-router": "^4.4.1",
+    "eslint": "^5.7.0",
     "express": "^4.16.2",
     "foreman": "^2.0.0",
     "history": "^4.7.2",
