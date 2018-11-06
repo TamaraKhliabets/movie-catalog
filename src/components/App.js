@@ -7,8 +7,6 @@ import Footer from './Footer';
 
 // import User from "./auth/User";
 
-import '../styles.css';
-
 const App = () => (
 	<div className="app">
 		<div className="title_container">
