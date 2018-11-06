@@ -33,9 +33,9 @@ export default class Menu extends Component {
 
 		  return (
 			<div className="menu">
-				{/*<button type="button" className="menu_button" onClick={this.changeVisibleMenu}>*/}
-					{/*<img src={menu} />*/}
-				{/*</button>*/}
+				<button type="button" className="menu_button" onClick={this.changeVisibleMenu}>
+					<img src={menu} />
+				</button>
 				{
 						!isMobile
 						  ? (
