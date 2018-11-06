@@ -6,31 +6,31 @@ import Filter from '../../containers/buttons/Filter';
 
 
 export default class MovieReq extends Component {
-	componentWillReceiveProps(nextProps) {
-		if (nextProps !== this.props) {
-			const { url, option, page, moviesFetchData } = this.props;
-			moviesFetchData(`${URL}${url}?api_key=${API_KEY}&${option}&page=${page}`);
-		}
-	}
+  componentWillReceiveProps(nextProps) {
+    if (nextProps !== this.props) {
+      const { url, option, page, moviesFetchData } = this.props;
+      moviesFetchData(`${URL}${url}?api_key=${API_KEY}&${option}&page=${page}`);
+    }
+  }
 
-	componentDidMount() {
-		const { url, option, page, moviesFetchData } = this.props;
-		moviesFetchData(`${URL}${url}?api_key=${API_KEY}&${option}&page=${page}`);
-	}
+  componentDidMount() {
+    const { url, option, page, moviesFetchData } = this.props;
+    moviesFetchData(`${URL}${url}?api_key=${API_KEY}&${option}&page=${page}`);
+  }
 
-	render() {
-		const { movies, hasError, isLoading } = this.props;
+  render() {
+    const { movies, hasError, isLoading } = this.props;
 
-		if (hasError) return <div>Error</div>;
+    if (hasError) return <div>Error</div>;
 
-		if (isLoading || !movies) return <div className="loading" />;
+    if (isLoading || !movies) return <div className="loading" />;
 
-		return (
+    return (
 			<div>
 				<Filter />
 				<ListItem />
 				<Page />
 			</div>
-		);
-	}
+    );
+  }
 }

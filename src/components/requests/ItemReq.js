@@ -7,13 +7,13 @@ import Similar from '../../containers/movies/Similar';
 import Reviews from '../../containers/movies/Reviews';
 
 export default class ItemReq extends Component {
-	componentDidMount() {
-		const { url, movieFetchData } = this.props;
-		movieFetchData(`${URL}${url}?api_key=${API_KEY}${'&language=en-US&append_to_response=videos,similar,credits,reviews'}`);
-	}
+  componentDidMount() {
+    const { url, movieFetchData } = this.props;
+    movieFetchData(`${URL}${url}?api_key=${API_KEY}${'&language=en-US&append_to_response=videos,similar,credits,reviews'}`);
+  }
 
-	render() {
-		return (
+  render() {
+    return (
 			<div>
 				<DataMovie />
 				<Cast />
@@ -21,6 +21,6 @@ export default class ItemReq extends Component {
 				<Similar />
 				<Reviews />
 			</div>
-		);
-	}
+    );
+  }
 }

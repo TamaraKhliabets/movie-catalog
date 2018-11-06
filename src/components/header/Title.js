@@ -1,13 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class Title extends Component {
-	render() {
-		return (
-			<div className="title">
-                What to watch???
+const Title = props => (
+	<button
+		type="button"
+		className="title"
+		onClick={() => {
+		  props.setDirection('/');
+		  props.setPage(1);
+		  props.setOption('language=en-US');
+		  props.changePage('/');
+		}}
+	>
+		{'What to watch???'}
+	</button>
 
+);
 
-   </div>
-		);
-	}
-}
+export default Title;

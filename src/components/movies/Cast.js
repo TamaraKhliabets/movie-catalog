@@ -34,22 +34,22 @@ export default class Cast extends Component {
     	if (!cast || !cast.length) return null;
 
     	const listActors = cast.slice(start, end).map(e => (
-    		<div key={e.id}>
-		<PersonLinkForMovie actor={e} />
-    		</div>
+					<div key={e.id}>
+						<PersonLinkForMovie actor={e} />
+					</div>
     	));
 
     	return (
-	<div className="cast_wrapper">
-    			<div className="subtitle">Starring &#8250;</div>
-	<div className="cast_main_content">
-    				<button onClick={this.prevMargin} className="cast_arrow">&#10094;</button>
-	<div className="cast">
-	{listActors}
-    				</div>
-	<button onClick={this.nextMargin} className="cast_arrow">&#10095;</button>
-    			</div>
-    		</div>
+					<div className="cast_wrapper">
+						<div className="subtitle">Starring &#8250;</div>
+						<div className="cast_main_content">
+							<button onClick={this.prevMargin} className="cast_arrow">&#10094;</button>
+							<div className="cast">
+								{listActors}
+							</div>
+							<button onClick={this.nextMargin} className="cast_arrow">&#10095;</button>
+						</div>
+					</div>
     	);
     }
 }

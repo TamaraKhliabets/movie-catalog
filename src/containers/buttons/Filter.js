@@ -3,19 +3,19 @@ import { setDirection, setOption, setSorting, setYear, changePage, setPage } fro
 import ButtonFilter from '../../components/buttons/ButtonFilter';
 
 const mapStateToProps = ({ direction, sorting, year, genre }) => ({
-	direction,
-	sorting,
-	year,
-	genre,
+  direction,
+  sorting,
+  year,
+  genre,
 });
 
 const mapDispatchToProps = {
-	setOption,
-	setDirection,
-	setSorting,
-	setYear,
-	setPage,
-	changePage,
+  setOption,
+  setDirection,
+  setSorting,
+  setYear,
+  setPage,
+  changePage,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ButtonFilter);

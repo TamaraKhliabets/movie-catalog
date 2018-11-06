@@ -1,12 +1,13 @@
 import { connect } from 'react-redux';
-import Search from '../../components/options/Search';
 import { changePage, setDirection, setOption, setPage } from '../../actions/options';
 
+import Title from '../../components/header/Title';
+
 const mapDispatchToProps = {
-  changePage,
   setDirection,
-  setOption,
   setPage,
+  setOption,
+  changePage,
 };
 
-export default connect(state => state, mapDispatchToProps)(Search);
+export default connect(state => state, mapDispatchToProps)(Title);

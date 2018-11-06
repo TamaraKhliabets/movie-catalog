@@ -52,3 +52,7 @@ build/Release
 # Editors crap
 .vscode
 .idea
+
+# css preprocessing
+src/**/*.css
+src/**/*.map

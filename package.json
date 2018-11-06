@@ -6,6 +6,7 @@
     "axios": "^0.18.0",
     "body-parser": "^1.18.2",
     "connected-react-router": "^4.4.1",
+    "custom-react-scripts": "^0.2.2",
     "eslint": "^5.7.0",
     "express": "^4.16.2",
     "foreman": "^2.0.0",
@@ -16,18 +17,31 @@
     "prop-types": "^15.6.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-less-watcher": "^1.1.4",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.1",
     "redux": "^4.0.0",
     "redux-devtools-extension": "^2.13.5",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
-    "start-dev": "nf start -p 3000",
+    "start-dev": "nf start -p 3000 & npm run watch-less",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.7.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-react-redux": "^2.3.0",
+    "less": "^3.8.1",
+    "node-less-chokidar": "^0.3.1",
+    "npm-run-all": "^4.1.3"
   }
 }

@@ -18,11 +18,11 @@ export default class User extends Component {
 
     	return (
 	<div className="user">
-    			<button className="user_btn" onClick={this.showInfo}>
+		<button className="user_btn" onClick={this.showInfo}>
 			<img src={user} />
 		</button>
-	{ isVisible ? <UserPage /> : null }
-    		</div>
+		{ isVisible ? <UserPage /> : null }
+	</div>
     	);
     }
 }

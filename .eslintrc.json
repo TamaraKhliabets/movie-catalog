@@ -16,12 +16,11 @@
     },
     "rules": {
         "react/destructuring-assignment": [0, "always"],
-        "indent": [2, "tab"],
+        "react/jsx-indent-props": [2, "tab"],
+        "react/jsx-indent": [2, "tab"],
         "no-tabs": 0,
-//        "prop-types": 2,
         "no-unused-vars": 0,
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-        "react/jsx-indent": [2, "tab"],
         "react/forbid-prop-types": [0, { "forbid": ["any", "array", "object"] }],
         "one-var-declaration-per-line": ["error", "initializations"],
         "object-curly-newline": ["error", {
@@ -41,7 +40,19 @@
             }
         }, {
             "enforceForRenamedProperties": false
-        }]
+        }],
+        "react/prop-types": [
+            0,
+            { "ignore": "ignore", "customValidators": "customValidator" }
+        ],
+        "no-mixed-spaces-and-tabs": [2, "smart-tabs"],
+        "no-trailing-spaces": 2,
+        "keyword-spacing": 2,
+        "space-before-function-paren": [
+            2,
+            "never"
+        ],
+        "semi": [ 2, "always" ]
     },
     "env": {
         "es6": true,

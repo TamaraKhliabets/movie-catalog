@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import PersonData from '../../components/person/PersonData';
 
 const mapStateToProps = ({ person }) => ({
-	person,
+  person,
 });
 
 export default connect(mapStateToProps)(PersonData);

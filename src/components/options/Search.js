@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export default class Search extends Component {
     state = {
-    	search: '',
+    		search: '',
     };
 
     searchSubmit = () => {
@@ -18,20 +18,24 @@ export default class Search extends Component {
     };
 
     render() {
-    	return (
-	<div className="search">
-	<input
-  placeholder="Type to search..."
-  className="search_button search_button_input"
-  value={this.state.search}
-  onChange={e => this.setState({
-    					search: e.target.value,
-    				})}
-		/>
-	<button onClick={this.searchSubmit} className="search_button_button">
-	<span role="img" aria-label="search" className="search_button_button">&#x1F50D;</span>
-    			</button>
-    		</div>
-    	);
+    		return (
+					<div className="search">
+						<input
+							placeholder="Type to search..."
+							className="search_button"
+							value={this.state.search}
+							onChange={e => this.setState({
+												search: e.target.value,
+							})}
+						/>
+						<button
+							type="button"
+							onClick={this.searchSubmit}
+							className="search_button_button"
+						>
+							<span role="img" aria-label="search" className="search_button_button">&#x1F50D;</span>
+						</button>
+					</div>
+      );
     }
 }

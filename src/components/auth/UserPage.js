@@ -38,9 +38,9 @@ export default class UserPage extends Component {
   render() {
   	return (
 	<div className="user_log">
-	<button onClick={this.handleLogin}>Login</button>
-	<button onClick={this.handleRegister}>Register</button>
-  		</div>
+		<button onClick={this.handleLogin}>Login</button>
+		<button onClick={this.handleRegister}>Register</button>
+	</div>
   	);
   }
 }

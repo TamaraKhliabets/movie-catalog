@@ -33,34 +33,36 @@ export default class Video extends Component {
     	if (!video || !video.length) return null;
 
     	const videos = video.map((e, i) => (
-	<button
-      key={e.id}
-      id={i}
-      className={(key === video[i].key) ? 'button_video_active' : 'button_video'}
-      onClick={this.setKey}
-    		>
-    			{e.name}
-    		</button>
+			<button
+				key={e.id}
+				id={i}
+				className={(key === video[i].key) ? 'button_video_active' : 'button_video'}
+				onClick={this.setKey}
+			>
+				{e.name}
+			</button>
     	)).slice(0, 3);
 
     	return (
-	<div className="video">
-	<div className="video_buttons">
-	{videos}
-    			</div>
-	<div className="video_youtube">
-	{
-    					site && site.toLowerCase() === 'youtube'
-    						? (
-    							<iframe
-    								width="560" height="315" frameBorder="0" allowFullScreen="1"
-  title={name} src={`https://www.youtube.com/embed/${key}`}
-	>
-	</iframe>
-    						) : null
-    				}
-    			</div>
-    		</div>
+			<div className="video">
+				<div className="video_buttons">
+					{videos}
+				</div>
+				<div className="video_youtube">
+					{
+							site && site.toLowerCase() === 'youtube' ? (
+									<iframe
+										width="560"
+										height="315"
+										frameBorder="0"
+										allowFullScreen="1"
+										title={name}
+										src={`https://www.youtube.com/embed/${key}`}
+									/>
+										) : null
+					}
+				</div>
+			</div>
     	);
     }
 }

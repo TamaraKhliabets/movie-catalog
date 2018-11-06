@@ -8,13 +8,13 @@ import rootReducer from './reducers';
 export const history = createBrowserHistory();
 
 const middleware = [
-	thunk,
-	routerMiddleware(history),
+  thunk,
+  routerMiddleware(history),
 ];
 
 export default function configureStore() {
-	return createStore(
-		connectRouter(history)(rootReducer),
-		composeWithDevTools(applyMiddleware(...middleware)),
-	);
+  return createStore(
+    connectRouter(history)(rootReducer),
+    composeWithDevTools(applyMiddleware(...middleware)),
+  );
 }

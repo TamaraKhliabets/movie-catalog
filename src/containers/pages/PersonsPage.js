@@ -6,16 +6,16 @@ import { personsFetchData } from '../../actions/persons';
 const getCurrentDirection = direction => PATH.find(e => e.direction === direction).url;
 
 const mapStateToProps = ({ page, persons, personsHasErr, personsIsLoad }, ownProps) => ({
-	url: getCurrentDirection(ownProps.direction),
-	page,
-	persons,
-	personsHasErr,
-	personsIsLoad,
+  url: getCurrentDirection(ownProps.direction),
+  page,
+  persons,
+  personsHasErr,
+  personsIsLoad,
 
 });
 
 const mapDispatchToProps = {
-	personsFetchData,
+  personsFetchData,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PersonsReq);

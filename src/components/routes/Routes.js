@@ -8,8 +8,8 @@ import ItemPage from '../../containers/pages/ItemPage';
 // import UserPage from "../auth/UserPage";
 
 export default class Routes extends Component {
-	render() {
-		return (
+  render() {
+    return (
 			<div>
 				<Switch>
 					<Route exact path="/" component={Home} />
@@ -19,6 +19,6 @@ export default class Routes extends Component {
 					{/* <Route path='/account' component={() => <UserPage/>}/> */}
 				</Switch>
 			</div>
-		);
-	}
+    );
+  }
 }

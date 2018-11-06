@@ -56,34 +56,33 @@ export default class PersonMovies extends Component {
 
     	if (showMovies) {
     		actualMovies = personMovie.map(e => (
-    			<div key={e.id} className="list_item">
-    				<MovieLink movie={e} />
- </div>
+					<div key={e.id} className="list_item">
+						<MovieLink movie={e} />
+					</div>
     		)).slice(start, end);
     	} else {
     		actualMovies = personTv.map(e => (
-    			<div key={e.id} className="list_item">
-		<TvLink movie={e} />
- </div>
+					<div key={e.id} className="list_item">
+						<TvLink movie={e} />
+					</div>
     		)).slice(start, end);
     	}
 
     	return (
-	<div>
-	<div className="list">
-	{ actualMovies }
-    			</div>
-	{
-    				visibleButtons
-    					? (
-    						<div className="btns_arrow">
-		<button onClick={this.prevMovies} className="btn_arrow">prev</button>
-    							<button onClick={this.nextMovies} className="btn_arrow">next</button>
- </div>
-    					)
-    					: null
-    			}
-    		</div>
+					<div>
+						<div className="list">
+							{ actualMovies }
+						</div>
+						{
+										visibleButtons ? (
+											<div className="btns_arrow">
+												<button onClick={this.prevMovies} className="btn_arrow">prev</button>
+												<button onClick={this.nextMovies} className="btn_arrow">next</button>
+											</div>
+											)
+											: null
+						}
+					</div>
     	);
     }
 }

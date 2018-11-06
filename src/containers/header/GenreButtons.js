@@ -1,19 +1,19 @@
 import { connect } from 'react-redux';
 import { changePage, setDirection, setOption, setPage, setGenre } from '../../actions/options';
 import { genresFetchData } from '../../actions/genres';
-import Genres from '../../components/header/menu/Genres';
+import GenresItems from '../../components/header/menu/GenresItems';
 
 const mapStateToProps = ({ genres }) => ({
-	genres,
+  genres,
 });
 
 const mapDispatchToProps = {
-	setDirection,
-	setPage,
-	setOption,
-	changePage,
-	setGenre,
-	genresFetchData,
+  setDirection,
+  setPage,
+  setOption,
+  changePage,
+  setGenre,
+  genresFetchData,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Genres);
+export default connect(mapStateToProps, mapDispatchToProps)(GenresItems);
