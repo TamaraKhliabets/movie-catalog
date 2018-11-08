@@ -14,7 +14,7 @@ class Home extends Component {
 
     return (
       <div>
-        {!movies ? <div className="loading" /> : <Carousel movies={movies} />}
+        {!movies ? <div className="loading" /> : <Carousel movies={movies.slice(0, 4)} />}
       </div>
     );
   }
