@@ -9,21 +9,17 @@ export default class Similar extends Component {
     if (!similar || !similar.length) return null;
 
     const shortMovies = similar.slice(0, 4);
-    const nodeItem = shortMovies.map((e) => {
-      if (direction === 'movie?') {
-        return (
-					<div key={e.id} className="list_item">
+    const nodeItem = shortMovies.map(e => (
+				<div key={e.id} className="list_item">
 						<MovieLink movie={e} />
-					</div>
-								);
-							} if (direction === 'tv?') {
-								return (
-					<div key={e.id} className="list_item">
-						<TvLink movie={e} />
-					</div>
-        );
-      }
-    });
+				</div>
+		));
+				// (direction === 'movie?') ? (
+				// 		) : (
+				// 		<div key={e.id} className="list_item">
+				// 				<TvLink movie={e} />
+				// 		</div>
+
 
     return (
 			<div>

@@ -580,6 +580,34 @@ a {
   font-weight: bold;
   color: #737284;
 }
+.personFilmography {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  background: #ccc;
+}
+.personFilmography_button {
+  flex-basis: 50%;
+  padding: .5em 1em;
+  font-size: 2em;
+  font-weight: bold;
+  color: #737284;
+  border: 0.1em solid #ccc;
+}
+.personFilmography_button_active {
+  flex-basis: 50%;
+  padding: .5em 1em;
+  font-size: 2em;
+  font-weight: bold;
+  color: #737284;
+  background-color: white;
+}
+.personFilmography_button_active_left {
+  border-bottom: .1em solid white;
+}
+.personFilmography_button_active_right {
+  border-bottom: .1em solid white;
+}
 .review {
   margin: 2em 1em;
   padding: 1em;

@@ -12,6 +12,14 @@ export default class ItemReq extends Component {
     movieFetchData(`${URL}${url}?api_key=${API_KEY}${'&language=en-US&append_to_response=videos,similar,credits,reviews'}`);
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.id !== prevProps.id) {
+      const { url, movieFetchData } = this.props;
+      movieFetchData(`${URL}${url}?api_key=${API_KEY}${'&language=en-US&append_to_response=videos,similar,credits,reviews'}`);
+    }
+  }
+
+
   render() {
     return (
 			<div>

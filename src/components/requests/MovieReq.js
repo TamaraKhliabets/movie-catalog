@@ -6,17 +6,18 @@ import Filter from '../../containers/buttons/Filter';
 
 
 export default class MovieReq extends Component {
-  componentWillReceiveProps(nextProps) {
-    if (nextProps !== this.props) {
+  componentDidMount() {
+    const { url, option, page, moviesFetchData } = this.props;
+    moviesFetchData(`${URL}${url}?api_key=${API_KEY}&${option}&page=${page}`);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props !== prevProps) {
       const { url, option, page, moviesFetchData } = this.props;
       moviesFetchData(`${URL}${url}?api_key=${API_KEY}&${option}&page=${page}`);
     }
   }
 
-  componentDidMount() {
-    const { url, option, page, moviesFetchData } = this.props;
-    moviesFetchData(`${URL}${url}?api_key=${API_KEY}&${option}&page=${page}`);
-  }
 
   render() {
     const { movies, hasError, isLoading } = this.props;

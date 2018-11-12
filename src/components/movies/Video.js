@@ -2,33 +2,19 @@ import React, { Component } from 'react';
 
 export default class Video extends Component {
     state = {
-    	key: null,
-    	site: null,
-    	name: null,
+    	keyIndex: 0,
     };
 
     setKey = (e) => {
-    	const { video } = this.props;
     	this.setState({
-    		key: video[e.target.id].key,
-    		site: video[e.target.id].site,
-    		name: video[e.target.id].name,
+					keyIndex: +e.target.value,
+
     	});
     };
 
-    componentWillReceiveProps(nextProps) {
-    	if (nextProps.video !== this.props.video) {
-    		this.setState({
-    			key: nextProps.video[0].key,
-    			site: nextProps.video[0].site,
-    			name: nextProps.video[0].name,
-    		});
-    	}
-    }
-
-    render() {
+		render() {
     	const { video } = this.props;
-    	const { key, site, name } = this.state;
+    	const { keyIndex } = this.state;
 
     	if (!video || !video.length) return null;
 
@@ -36,7 +22,8 @@ export default class Video extends Component {
 			<button
 				key={e.id}
 				id={i}
-				className={(key === video[i].key) ? 'button_video_active' : 'button_video'}
+				value={i}
+				className={(keyIndex === i) ? 'button_video_active' : 'button_video'}
 				onClick={this.setKey}
 			>
 				{e.name}
@@ -50,14 +37,14 @@ export default class Video extends Component {
 				</div>
 				<div className="video_youtube">
 					{
-							site && site.toLowerCase() === 'youtube' ? (
+							video[keyIndex].site.toLowerCase() === 'youtube' ? (
 									<iframe
 										width="560"
 										height="315"
 										frameBorder="0"
 										allowFullScreen="1"
-										title={name}
-										src={`https://www.youtube.com/embed/${key}`}
+										title={video[keyIndex].name}
+										src={`https://www.youtube.com/embed/${video[keyIndex].key}`}
 									/>
 										) : null
 					}
