@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { API_KEY, URL } from '../../constants';
 import PersonData from '../../containers/person/PersonData';
 import PersonFilmpgraphy from '../../containers/person/PersonFilmography';
@@ -15,10 +16,21 @@ export default class PersonReq extends Component {
     if (!person) return <div className="loading" />;
 
     return (
-			<div>
-				<PersonData />
-				<PersonFilmpgraphy />
-			</div>
+      <div>
+        <PersonData />
+        <PersonFilmpgraphy />
+      </div>
     );
   }
 }
+
+PersonReq.propTypes = {
+  url: PropTypes.string,
+  person: PropTypes.instanceOf(Object),
+  personFetchData: PropTypes.func.isRequired,
+};
+
+PersonReq.defaultProps = {
+  url: '',
+  person: null,
+};

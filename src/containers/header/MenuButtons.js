@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import MenuItems from '../../components/header/menu/MenuItems';
-import { changePage, setDirection, setOption, setPage } from '../../actions/options';
+import {
+  changePage, setDirection, setOption, setPage,
+} from '../../actions/options';
 
 const mapDispatchToProps = {
   setDirection,

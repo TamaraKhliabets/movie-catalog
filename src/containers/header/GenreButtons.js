@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
-import { changePage, setDirection, setOption, setPage, setGenre } from '../../actions/options';
+import {
+  changePage, setDirection, setOption, setPage, setGenre,
+} from '../../actions/options';
 import { genresFetchData } from '../../actions/genres';
 import GenresItems from '../../components/header/menu/GenresItems';
 

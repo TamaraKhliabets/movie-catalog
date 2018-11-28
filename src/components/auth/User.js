@@ -1,28 +1,18 @@
-import React, { Component } from 'react';
-import user from '../../default/user (1).png';
-import UserPage from './UserPage';
+import React from 'react';
+import PropTypes from 'prop-types';
+import UserButton from '../user/UserButton';
+import Auth from './Auth';
 
-export default class User extends Component {
-    state = {
-    	isVisible: false,
-    };
-
-    showInfo = () => {
-    	this.setState({
-    		isVisible: !this.state.isVisible,
-    	});
-    };
-
-    render() {
-    	const { isVisible } = this.state;
-
-    	return (
-	<div className="user">
-		<button className="user_btn" onClick={this.showInfo}>
-			<img src={user} />
-		</button>
-		{ isVisible ? <UserPage /> : null }
-	</div>
-    	);
-    }
+function User({ userName }) {
+  return userName ? <UserButton /> : <Auth />;
 }
+
+User.propTypes = {
+  userName: PropTypes.bool,
+};
+
+User.defaultProps = {
+  userName: null,
+};
+
+export default User;
