@@ -12,9 +12,9 @@ export const authHasError = bool => ({
 });
 
 export const login = user => (dispatch) => {
-  axios.post('http://moviescatalog.herokuapp.com:3001/movie/users/login', user)
+  axios.post('http://localhost:3001/movie/users/login', user)
     .then(res => dispatch(switchAuthOn(res.data.userName)))
-    .catch(() => dispatch(authHasError(true)));
+    .catch(() => alert('Something went wrong!'));
 };
 
 export const logout = userName => ({
@@ -38,9 +38,9 @@ export const tvIsFavorite = bool => ({
   isFavoriteTv: bool,
 });
 
-export const moviesFavoriteFetchDataSuccess = moviesFavorite => ({
+export const moviesFavoriteFetchDataSuccess = movies => ({
   type: types.MOVIE_FAVORITE_FETCH_DATA_SUCCESS,
-  moviesFavorite,
+  movies,
 });
 
 export const tvsFavoriteFetchDataSuccess = tvsFavorite => ({
@@ -49,31 +49,31 @@ export const tvsFavoriteFetchDataSuccess = tvsFavorite => ({
 });
 
 export const addToFavoriteMovies = movie => (dispatch) => {
-  axios.put('http://moviescatalog.herokuapp.com:3001/movie/users/addMovie', movie)
+  axios.put('http://localhost:3001/movie/users/addMovie', movie)
     .then(res => dispatch(movieIsFavorite(res.data.success)))
     .catch(() => alert('Something went wrong!'));
 };
 
 export const deleteFromFavoriteMovies = movie => (dispatch) => {
-  axios.put('http://moviescatalog.herokuapp.com:3001/movie/users/deleteMovie', movie)
+  axios.put('http://localhost:3001/movie/users/deleteMovie', movie)
     .then(res => dispatch(movieIsFavorite(res.data.success)))
-    .catch(res => console.log(res.data));
+    .catch(() => alert('Something went wrong!'));
 };
 
 export const addToFavoriteTvs = tv => (dispatch) => {
-  axios.put('http://moviescatalog.herokuapp.com:3001/movie/users/addTv', tv)
+  axios.put('http://localhost:3001/movie/users/addTv', tv)
     .then(res => dispatch(tvIsFavorite(res.data.success)))
-    .catch(res => console.log(res.data));
+    .catch(() => alert('Something went wrong!'));
 };
 
 export const deleteFromFavoriteTvs = tv => (dispatch) => {
-  axios.put('http://moviescatalog.herokuapp.com:3001/movie/users/deleteTv', tv)
+  axios.put('http://localhost:3001/movie/users/deleteTv', tv)
     .then(res => dispatch(tvIsFavorite(res.data.success)))
     .catch(res => console.log(res.data));
 };
 
 export const checkMovie = movie => (dispatch) => {
-  axios.post('http://moviescatalog.herokuapp.com:3001/movie/users/checkMovie', movie)
+  axios.post('http://localhost:3001/movie/users/checkMovie', movie)
     .then(res => dispatch(movieIsFavorite(res.data.isChecked)))
     .catch(() => dispatch(messegeFromDbErr(true)));
 };
@@ -81,15 +81,17 @@ export const checkMovie = movie => (dispatch) => {
 export const checkTv = tv => (dispatch) => {
   axios.post('http://localhost:3001/movie/users/checkTv', tv)
     .then(res => dispatch(tvIsFavorite(res.data.isChecked)))
-    .catch(() => dispatch(messegeFromDbErr(true)));
+    .catch(() => alert('Something went wrong!'));
 };
 
 export const findFavoriteMovies = userName => (dispatch) => {
-  axios.post('http://moviescatalog.herokuapp.com:3001/movie/users/movies', userName)
-    .then(res => dispatch(moviesFavoriteFetchDataSuccess(res.data.user[0].movies)));
+  axios.post('http://localhost:3001/movie/users/movies', userName)
+    .then(res => dispatch(moviesFavoriteFetchDataSuccess(res.data.user[0].movies)))
+    .catch(() => alert('Something went wrong!'));
 };
 
 export const findFavoriteTvs = userName => (dispatch) => {
-  axios.post('http://moviescatalog.herokuapp.com:3001/movie/users/tvs', userName)
-    .then(res => dispatch(tvsFavoriteFetchDataSuccess(res.data.user[0].tvs)));
+  axios.post('http://localhost:3001/movie/users/tvs', userName)
+    .then(res => dispatch(tvsFavoriteFetchDataSuccess(res.data.user[0].tvs)))
+    .catch(() => alert('Something went wrong!'));
 };

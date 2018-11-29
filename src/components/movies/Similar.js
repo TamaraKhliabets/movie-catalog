@@ -7,7 +7,7 @@ function Similar({ similar, direction }) {
   if (!similar || !similar.length) return <div className="null" />;
   const shortLost = similar.slice(0, 4);
   const nodeItems = shortLost.map((e) => {
-    if (direction === 'movie?') {
+    if (direction === 'movie?' || direction === 'favoriteMovie?') {
       return (
         <div key={e.id} className="list_item">
           <MovieLink movie={e} />

@@ -9,7 +9,7 @@ const router = express.Router();
 
 const port = process.env.API_PORT || 3001;
 
-mongoose.connect(API);
+mongoose.connect(API || process.env.API);
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
@@ -53,7 +53,7 @@ router.route('/users')
           return res.json({ success: true, duplicate: false });
         });
       } else {
-      		return res.json({ success: true, duplicate: true });
+        return res.json({ success: true, duplicate: true });
       }
     });
   });

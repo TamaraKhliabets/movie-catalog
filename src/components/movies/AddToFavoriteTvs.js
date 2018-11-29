@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export default class AddToFavoriteTvs extends Component {
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(prevProps) {
     const {
       checkTv, movie, userName, tvIsFavorite,
     } = this.props;
     if (userName) {
-      if (movie !== nextProps.movie || tvIsFavorite !== nextProps.tvIsFavorite) {
+      if (movie !== prevProps.movie || tvIsFavorite !== prevProps.tvIsFavorite) {
         const { id } = movie;
         checkTv({ id, userName });
       }
@@ -53,6 +53,6 @@ AddToFavoriteTvs.propTypes = {
 
 AddToFavoriteTvs.defaultProps = {
   movie: null,
-  tvIsFavorite: null,
+  tvIsFavorite: false,
   userName: false,
 };

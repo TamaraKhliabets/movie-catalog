@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export default class AddToFavoriteMovies extends Component {
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(prevProps) {
     const {
       checkMovie, movie, userName, movieIsFavorite,
     } = this.props;
     if (userName) {
-      if (movie !== nextProps.movie || movieIsFavorite !== nextProps.movieIsFavorite) {
+      if (movie !== prevProps.movie || movieIsFavorite !== prevProps.movieIsFavorite) {
         const { id } = movie;
         checkMovie({ id, userName });
       }
@@ -24,7 +24,6 @@ export default class AddToFavoriteMovies extends Component {
       addToFavoriteMovies({ movie, userName });
     }
   };
-
 
   render() {
     const { movie, userName, movieIsFavorite } = this.props;
@@ -43,7 +42,7 @@ export default class AddToFavoriteMovies extends Component {
 
 AddToFavoriteMovies.propTypes = {
   movie: PropTypes.instanceOf(Object),
-  movieIsFavorite: PropTypes.bool,
+  movieIsFavorite: PropTypes.number,
   addToFavoriteMovies: PropTypes.func.isRequired,
   userName: PropTypes.bool,
   deleteFromFavoriteMovies: PropTypes.func.isRequired,
@@ -52,6 +51,6 @@ AddToFavoriteMovies.propTypes = {
 
 AddToFavoriteMovies.defaultProps = {
   movie: null,
-  movieIsFavorite: null,
+  movieIsFavorite: 0,
   userName: false,
 };

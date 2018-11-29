@@ -661,8 +661,12 @@ a {
   background: transparent;
 }
 .user_log {
+  background: #ccc;
   width: 25%;
   z-index: 10;
+  position: absolute;
+  top: 20%;
+  right: .5%;
   box-sizing: border-box;
   padding: 1em;
   display: flex;

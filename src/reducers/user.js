@@ -48,10 +48,10 @@ export const movieIsFavorite = (state = initialState.isFavoriteMovie, action) =>
   }
 };
 
-export const moviesFavorite = (state = initialState.moviesFavorite, action) => {
+export const moviesFavorite = (state = initialState.movies, action) => {
   switch (action.type) {
     case types.MOVIE_FAVORITE_FETCH_DATA_SUCCESS:
-      return action.moviesFavorite;
+      return action.movies;
     default:
       return state;
   }
