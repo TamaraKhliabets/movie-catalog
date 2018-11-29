@@ -178,7 +178,7 @@ router.route('/users/tvs')
     });
   });
 
-app.use('/movie', router);
+app.use('/api', router);
 
 app.listen(port, () => {
   console.log(`api works on port ${port}`);
