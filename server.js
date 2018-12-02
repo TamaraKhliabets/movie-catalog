@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const express = require('express');
+const cors = require('cors');
 const UserAuth = require('./backend/models/user');
 const API = require('./backend/secrets');
 
@@ -8,6 +9,14 @@ const app = express();
 const router = express.Router();
 
 const port = process.env.API_PORT || 3001;
+
+const corsOptions = {
+  origin: 'https://testmoviecatalog.herokuapp.com',
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors());
 
 mongoose.connect(API || process.env.API);
 const db = mongoose.connection;
