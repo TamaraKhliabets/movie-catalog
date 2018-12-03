@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import Search from '../../components/options/Search';
-import { changePage, setDirection, setOption, setPage } from '../../actions/options';
+import {
+  changePage, setDirection, setOption, setPage,
+} from '../../actions/options';
 
 const mapDispatchToProps = {
   changePage,

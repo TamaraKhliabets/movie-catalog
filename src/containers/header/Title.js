@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
-import { changePage, setDirection, setOption, setPage } from '../../actions/options';
+import {
+  changePage, setDirection, setOption, setPage,
+} from '../../actions/options';
 
 import Title from '../../components/header/Title';
 

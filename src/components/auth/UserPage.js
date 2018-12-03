@@ -1,46 +1,37 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { API_KEY, URL } from '../../constants';
+import Login from '../../containers/auth/Login';
+import Register from './Register';
 
 export default class UserPage extends Component {
-  state = {
-  	token: null,
-  };
+  state = { isVisible: true };
 
-  auth = () => {
-  	axios.get(`${URL}/authentication/token/new?api_key=${API_KEY}`)
-  		.then(res => this.setState({
-  			token: res.data.request_token,
-  		}));
+  changeVisible = () => {
+    const { isVisible } = this.state;
+    this.setState({ isVisible: !isVisible });
   };
-
-  handleLogin = () => {
-  	console.log(this.state.token);
-  	axios.get(`https://www.themoviedb.org/authenticate/${this.state.token}?redirect_to=http://localhost:3000`,
-  		{
-  			headers: {
-  			'Access-Control-Allow-Origin': '*',
-  			'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
-  			'Access-Control-Allow-Headers': 'Content-Type',
-  		},
-  		});
-  };
-
-  handleRegister = () => {
-  	// console.log(this.state.token);
-  	// axios.get(`https://www.themoviedb.org/authenticate/${this.state.token}?redirect_to=https://www.themoviedb.org/account/signup/approved`)
-  };
-
-  componentDidMount() {
-  	this.auth();
-  }
 
   render() {
-  	return (
-	<div className="user_log">
-		<button onClick={this.handleLogin}>Login</button>
-		<button onClick={this.handleRegister}>Register</button>
-	</div>
-  	);
+    const { isVisible } = this.state;
+
+    return (
+      <div className="user_log">
+        <div className="user_log_btns">
+          <input
+            type="button"
+            className="user_log_btn"
+            onClick={this.changeVisible}
+            value="Sign in"
+          />
+          <input
+            type="button"
+            className="user_log_btn"
+            onClick={this.changeVisible}
+            value="Sign up"
+          />
+        </div>
+        <div className="user_log_form">
+          {isVisible ? <Login /> : <Register />}
+        </div>
+      </div>);
   }
 }

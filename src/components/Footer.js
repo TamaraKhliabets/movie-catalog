@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class Footer extends Component {
-  render() {
-    const url = 'https://developers.themoviedb.org/3';
-
-    return (
-			<div className="footer">
-				<a href={url}>The Movie Database API</a>
-			</div>
-    );
-  }
+function Footer() {
+  const url = 'https://developers.themoviedb.org/3';
+  return (
+    <div className="footer">
+      <a href={url}>The Movie Database API</a>
+    </div>);
 }
+
+export default Footer;

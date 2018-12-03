@@ -1,11 +1,29 @@
 import { combineReducers } from 'redux';
-import { movies, totalPages, moviesHasError, moviesIsLoading } from './movies';
-import { option, direction, page, year, genre, sorting } from './options';
+import {
+  movies, totalPages, moviesHasError, moviesIsLoading,
+} from './movies';
+import {
+  option, direction, page, year, genre, sorting,
+} from './options';
 import { genres, genresHasErr, genresIsLoad } from './genres';
-import { movie, movieHasErr, movieIsLoad, cast, video, similar, reviews } from './movie';
-import { person, personHasErr, personIsLoad, personMovie, personTv, showMovies } from './person';
+import {
+  movie, movieHasErr, movieIsLoad, cast, video, similar, reviews,
+} from './movie';
+import {
+  person, personHasErr, personIsLoad, personMovie, personTv, showMovies,
+} from './person';
 import { persons, personsHasErr, personsIsLoad } from './persons';
 import { collection, collectionHasErr, collectionIsLoad } from './collection';
+import {
+  authHasError,
+  userName,
+  messegeFromDb,
+  messegeFromDbErr,
+  movieIsFavorite,
+  moviesFavorite,
+  tvIsFavorite,
+  tvsFavorite,
+} from './user';
 
 export default combineReducers({
   movies,
@@ -40,4 +58,12 @@ export default combineReducers({
   collection,
   collectionHasErr,
   collectionIsLoad,
+  authHasError,
+  userName,
+  messegeFromDb,
+  messegeFromDbErr,
+  movieIsFavorite,
+  moviesFavorite,
+  tvIsFavorite,
+  tvsFavorite,
 });

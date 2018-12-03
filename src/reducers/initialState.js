@@ -31,4 +31,12 @@ export default {
   collection: null,
   collectionIsLoad: false,
   collectionHasErr: false,
+  authHasErr: false,
+  messegeFromDb: false,
+  messegeFromDbErr: false,
+  userName: false,
+  isFavoriteMovie: false,
+  moviesFavorite: null,
+  isFavoriteTv: false,
+  tvsFavorite: null,
 };

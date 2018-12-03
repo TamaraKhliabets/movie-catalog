@@ -5,21 +5,21 @@ import Menu from './header/Menu';
 import Search from '../containers/options/Search';
 import Footer from './Footer';
 
-// import User from "./auth/User";
+import User from '../containers/auth/User';
 
 const App = () => (
-	<div className="app">
-		<div className="title_container">
-			<Title />
-			<Menu />
-			<Search />
-			{/* <User/> */}
-		</div>
-		<div className="main_container">
-			<Routes />
-		</div>
-		<Footer />
-	</div>
+  <div className="app">
+    <div className="title_container">
+      <Title />
+      <Menu />
+      <Search />
+      <User />
+    </div>
+    <div className="main_container">
+      <Routes />
+    </div>
+    <Footer />
+  </div>
 );
 
 export default App;
