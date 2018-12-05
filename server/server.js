@@ -8,15 +8,10 @@ const path = require('path');
 
 const app = express();
 const router = express.Router();
-//
-// const staticFiles = express.static(path.join(__dirname, '../../client build'));
+
+const staticFiles = express.static(path.join(__dirname, '../client/build'));
 
 const port = process.env.API_PORT || 3001;
-
-// const corsOptions = {
-//   origin: 'https://testmoviecatalog.herokuapp.com',
-//   optionsSuccessStatus: 200,
-// };
 
 app.options('*', cors());
 
@@ -28,10 +23,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// app.use(staticFiles);
-// app.use('/*', staticFiles);
-//
-// app.set('port', (process.env.PORT || 3001));
+app.use(staticFiles);
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -195,6 +187,9 @@ router.route('/users/tvs')
   });
 
 app.use('/api', router);
+app.use('/*', staticFiles);
+
+app.set('port', (process.env.PORT || 3001));
 
 app.listen(port, () => {
   console.log(`api works on port ${port}`);
