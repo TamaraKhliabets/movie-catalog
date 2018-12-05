@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const cors = require('cors');
 const UserAuth = require('./backend/models/user');
-const API = require('./backend/secrets');
+const dbUri = require('./backend/secrets');
 const path = require('path');
 
 const app = express();
@@ -18,9 +18,9 @@ const port = process.env.API_PORT || 3001;
 //   optionsSuccessStatus: 200,
 // };
 
-// app.options('*', cors());
+app.options('*', cors());
 
-mongoose.connect(API || process.env.API);
+mongoose.connect(dbUri || process.env.API, { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
