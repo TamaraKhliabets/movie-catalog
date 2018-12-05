@@ -10,8 +10,6 @@ const router = express.Router();
 
 const staticFiles = express.static(path.join(__dirname, '../client/build'));
 
-const port = process.env.API_PORT || 3001;
-
 app.options('*', cors());
 
 mongoose.connect(process.env.API, { useNewUrlParser: true });
@@ -188,8 +186,8 @@ router.route('/users/tvs')
 app.use('/api', router);
 app.use('/*', staticFiles);
 
-app.set('port', (process.env.PORT || 3001));
+app.set('port', (process.env.PORT));
 
-app.listen(port, () => {
-  console.log(`api works on port ${port}`);
+app.listen(app.get('port'), () => {
+  console.log(`api works on port ${app.get('port')}`);
 });
