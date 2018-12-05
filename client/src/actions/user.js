@@ -12,7 +12,7 @@ export const authHasError = bool => ({
 });
 
 export const login = user => (dispatch) => {
-  axios.post('/api/users/login', user)
+  axios.post('https://servercatalog.herokuapp.com/api/users/login', user)
     .then(res => dispatch(switchAuthOn(res.data.userName)))
     .catch(() => alert('Something went wrong!'));
 };

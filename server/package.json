@@ -5,9 +5,10 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "build": "babel . --ignore node_modules,build --out-dir build",
-    "start:prod": "node build/server.js"
+    "start:prod": "node build/server.js",
+    "publishheroku": "cd ../ && git subtree push --prefix server servercatalog master || true"
   },
   "keywords": [],
   "author": "",

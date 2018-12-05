@@ -9,12 +9,13 @@ const app = express();
 const router = express.Router();
 
 const corsOptions = {
-    origin: 'https://servercatolog.herokuapp.com',
+    origin: 'https://testmovieserver.herokuapp.com',
     optionsSuccessStatus: 200
 };
 
 app.use(cors(corsOptions));
 app.options('*', cors());
+
 
 mongoose.connect(process.env.API, { useNewUrlParser: true });
 const db = mongoose.connection;
@@ -23,6 +24,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use('/api', router);
 
 
 app.use((req, res, next) => {
@@ -34,8 +36,8 @@ app.use((req, res, next) => {
     next();
 });
 
-router.get('/', (req, res) => {
-    res.json({ message: 'API works!' });
+app.get('/api', (req, res) => {
+    res.send({ express: 'API!' });
 });
 
 router.route('/users/login')
@@ -185,8 +187,6 @@ router.route('/users/tvs')
             return res.json({ success: true, user });
         });
     });
-
-app.use('/api', router);
 
 app.listen(port, () => {
     console.log(`api works on port ${port}`);
