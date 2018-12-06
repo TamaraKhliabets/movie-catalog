@@ -7,14 +7,14 @@ let port = process.env.PORT || 3001;
 
 const app = express();
 const router = express.Router();
-
-const corsOptions = {
-    origin: 'https://testmovieserver.herokuapp.com',
-    optionsSuccessStatus: 200
-};
-
-app.use(cors(corsOptions));
-app.options('*', cors());
+//
+// const corsOptions = {
+//     origin: 'https://servercatolog.herokuapp.com',
+//     optionsSuccessStatus: 200
+// };
+//
+// app.use(cors(corsOptions));
+// app.options('*', cors());
 
 
 mongoose.connect(process.env.API, { useNewUrlParser: true });
