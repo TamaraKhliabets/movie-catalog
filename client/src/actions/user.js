@@ -1,5 +1,6 @@
 import axios from 'axios/index';
 import * as types from '../constants';
+import { SERVER } from "../constants";
 
 export const switchAuthOn = userName => ({
   type: types.USERS_LOGIN_SUCCESS,
@@ -12,8 +13,7 @@ export const authHasError = bool => ({
 });
 
 export const login = user => (dispatch) => {
-  console.log(user);
-  axios.post('https://servercatalog.herokuapp.com/api/users/login', user)
+  axios.post(`${SERVER}/api/users/login`, user)
     .then(res => dispatch(switchAuthOn(res.data.userName)))
     .catch(() => alert('Something went wrong!'));
 };
@@ -50,49 +50,49 @@ export const tvsFavoriteFetchDataSuccess = tvsFavorite => ({
 });
 
 export const addToFavoriteMovies = movie => (dispatch) => {
-  axios.put('/api/users/addMovie', movie)
+  axios.put(`${SERVER}/api/users/addMovie`, movie)
     .then(res => dispatch(movieIsFavorite(res.data.success)))
     .catch(() => alert('Something went wrong!'));
 };
 
 export const deleteFromFavoriteMovies = movie => (dispatch) => {
-  axios.put('/api/users/deleteMovie', movie)
+  axios.put(`${SERVER}/api/users/deleteMovie`, movie)
     .then(res => dispatch(movieIsFavorite(res.data.success)))
     .catch(() => alert('Something went wrong!'));
 };
 
 export const addToFavoriteTvs = tv => (dispatch) => {
-  axios.put('/api/users/addTv', tv)
+  axios.put(`${SERVER}/api/users/addTv`, tv)
     .then(res => dispatch(tvIsFavorite(res.data.success)))
     .catch(() => alert('Something went wrong!'));
 };
 
 export const deleteFromFavoriteTvs = tv => (dispatch) => {
-  axios.put('/api/users/deleteTv', tv)
+  axios.put(`${SERVER}/api/users/deleteTv`, tv)
     .then(res => dispatch(tvIsFavorite(res.data.success)))
     .catch(res => console.log(res.data));
 };
 
 export const checkMovie = movie => (dispatch) => {
-  axios.post('/api/users/checkMovie', movie)
+  axios.post(`${SERVER}/api/users/checkMovie`, movie)
     .then(res => dispatch(movieIsFavorite(res.data.isChecked)))
     .catch(() => dispatch(messegeFromDbErr(true)));
 };
 
 export const checkTv = tv => (dispatch) => {
-  axios.post('/api/users/checkTv', tv)
+  axios.post(`${SERVER}/api/users/checkTv`, tv)
     .then(res => dispatch(tvIsFavorite(res.data.isChecked)))
     .catch(() => alert('Something went wrong!'));
 };
 
 export const findFavoriteMovies = userName => (dispatch) => {
-  axios.post('/api/users/movies', userName)
+  axios.post(`${SERVER}/api/users/movies`, userName)
     .then(res => dispatch(moviesFavoriteFetchDataSuccess(res.data.user[0].movies)))
     .catch(() => alert('Something went wrong!'));
 };
 
 export const findFavoriteTvs = userName => (dispatch) => {
-  axios.post('/api/users/tvs', userName)
+  axios.post(`${SERVER}/api/users/tvs`, userName)
     .then(res => dispatch(tvsFavoriteFetchDataSuccess(res.data.user[0].tvs)))
     .catch(() => alert('Something went wrong!'));
 };

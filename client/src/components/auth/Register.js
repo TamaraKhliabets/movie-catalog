@@ -7,7 +7,7 @@ export default class Register extends Component {
 
   onUserSubmit = (user) => {
     this.setState({ userName: user.userName });
-    axios.post('http://localhost:3001/movie/users', user).then((res) => {
+    axios.post('https://servercatalog.herokuapp.com/api/users', user).then((res) => {
       this.setState({ duplicate: res.data.duplicate });
     });
   };

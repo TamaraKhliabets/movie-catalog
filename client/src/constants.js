@@ -70,6 +70,7 @@ export const PATH = [
     url: '/collection',
   },
 ];
+export const SERVER = 'https://servercatalog.herokuapp.com';
 export const SET_OPTION = 'SET_OPTION';
 export const SET_DIRECTION = 'SET_DIRECTION';
 export const SET_TOTAL_PAGES = 'SET_TOTAL_PAGES';
