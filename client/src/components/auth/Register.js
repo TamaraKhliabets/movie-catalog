@@ -21,7 +21,6 @@ export default class Register extends Component {
     return (
       <div>
         <div className={duplicate ? 'user_dublicate_true' : 'user_dublicat_false'}>{`Username "${userName}" is already taken`}</div>
-          <div className={}>{`Try to login`}</div>
         <RegisterForm onSubmit={this.onUserSubmit} />
       </div>);
   }
