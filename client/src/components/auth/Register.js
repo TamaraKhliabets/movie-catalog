@@ -7,9 +7,12 @@ export default class Register extends Component {
 
   onUserSubmit = (user) => {
     this.setState({ userName: user.userName });
-    axios.post('https://servercatalog.herokuapp.com/api/users', user).then((res) => {
-      this.setState({ duplicate: res.data.duplicate });
-    });
+    axios.post('https://servercatalog.herokuapp.com/api/users', user)
+        .then((res) => {
+            if(!res.data.duplicate) alert('Try to login');
+            this.setState({ duplicate: res.data.duplicate });
+        })
+        .catch(() => alert('Something went wrong!'));
   };
 
   render() {
@@ -18,6 +21,7 @@ export default class Register extends Component {
     return (
       <div>
         <div className={duplicate ? 'user_dublicate_true' : 'user_dublicat_false'}>{`Username "${userName}" is already taken`}</div>
+          <div className={}>{`Try to login`}</div>
         <RegisterForm onSubmit={this.onUserSubmit} />
       </div>);
   }
